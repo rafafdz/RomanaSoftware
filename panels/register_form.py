@@ -77,7 +77,6 @@ class RegisterForm(BasePanel):
         name = self.name_entry.text()
         company = self.company_entry.text()
         
-        print(name, rut, company)
         
         self.main_interface.set_user_info(name, rut, company)
         self.main_interface.change_confirm_register()

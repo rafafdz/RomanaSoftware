@@ -179,7 +179,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="money_entry"/>
       </item>
       <item>
        <spacer name="right_space2">
@@ -200,7 +200,7 @@
    <item>
     <widget class="QLabel" name="error_lbl">
      <property name="text">
-      <string>Ingrese un monto correcto</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
