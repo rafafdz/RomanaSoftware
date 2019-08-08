@@ -4,7 +4,7 @@ import os
 
 class Config():
     # Singleton Pattern
-    FILENAME = "romana_admin.config"
+    FILENAME = "admin_config.ini"
     DEFAULT_CONFIG = {
         "CARD_PORT" : "COM3",
         "ADMIN_CARD" : "INSRTCRD",

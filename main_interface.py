@@ -6,6 +6,10 @@ from utilities import (save_new_user, user_info,
                        user_balance, add_balance, hide_card)
 import sys
 import os
+import logging
+from logging.config import fileConfig
+
+
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "panels"))
 
 from admin_interface import AdminInterface
@@ -22,6 +26,10 @@ from confirm_charge import ConfirmCharge
 from charge_ok import ChargeOk
 from not_detected import NotDetected
 from client_info import ClientInfo
+
+
+fileConfig('logger_config.ini')
+logger = logging.getLogger()
     
 class MainInterface(QtWidgets.QWidget):
     def __init__(self):
@@ -42,6 +50,7 @@ class MainInterface(QtWidgets.QWidget):
         self.current_name = None
         self.current_rut = None
         self.current_company = None
+        self.current_phone = None
         self.extra_balance = None        
     
         self.title_lbl = QtWidgets.QLabel(objectName="title_lbl")
@@ -93,7 +102,7 @@ class MainInterface(QtWidgets.QWidget):
         self.change_main()
         
         # Developing porpouses
-        self.stack.setCurrentWidget(self.charge_form)
+        self.stack.setCurrentWidget(self.register_form)
         
         
     def set_title(self, title):
@@ -138,19 +147,26 @@ class MainInterface(QtWidgets.QWidget):
         if self.get_current_panel() == self.use_card:
             self.stack.setCurrentWidget(self.not_detected)   
         
-    def change_reader_error(self):
+    def change_reader_error(self, error_msg):
+        logger.critical("Error en Lector: %s", error_msg)
+        
         if self.get_current_panel() == self.use_card:
-            self.stack.setCurrentWidget(self.reader_error) 
+            self.stack.setCurrentWidget(self.reader_error)
+            
+    def log_exited_charge(self):
+        logger.info("Carga abortada en %s de $%s", 
+                    self.current_card, self.extra_balance)
 
     def change_confirm_register(self):
         self.confirm_register.set_card(hide_card(self.current_card))
         self.confirm_register.set_name(self.current_name)
         self.stack.setCurrentWidget(self.confirm_register)
         
-    def set_user_info(self, name, rut, company):
+    def set_user_info(self, name, rut, company, phone):
         self.current_name = name
         self.current_rut = rut
         self.current_company = company
+        self.current_phone = phone
         
     def clear_and_exit(self):
         self.clear_user_info()
@@ -160,11 +176,16 @@ class MainInterface(QtWidgets.QWidget):
         self.current_card = None
         self.current_name = None
         self.current_rut = None
+        self.current_phone = None
         self.current_company = None
         self.extra_balance = None
         
     def card_read_action(self, card):
-        print("Card Detected", card)
+        
+        is_admin = card == Config().get_conf("ADMIN_CARD")
+        
+        if not is_admin:
+            logger.info("Tarjeta cliente detectada: %s", card)
         
         if self.get_current_panel() != self.use_card:
             return
@@ -172,20 +193,27 @@ class MainInterface(QtWidgets.QWidget):
         if self.use_card.client_card:
             self.current_card = card
             
-            if self.current_card == Config().get_conf("ADMIN_CARD"):
-                print("Tarjeta de admin detectada")
+            if is_admin:
+                logger.info("Tarjeta de admin en vez de cliente detectada")
                 self.change_card_client()
                 return    
             
             if self.current_section in ("reload", "info") and not user_info(card):
+                logger.info("Accedido a %s con tarjeta no registrada : %s",
+                            self.current_section, self.current_card)
+                
                 self.stack.setCurrentWidget(self.not_registered)
                 return
             
             if self.current_section == "register":
+                
                 if user_info(self.current_card):
+                    logger.info("Intentando re registrar tarjeta : %s",
+                                self.current_card)
                     self.stack.setCurrentWidget(self.already_used)
                     return
                 
+                self.register_form.reset_form()
                 self.stack.setCurrentWidget(self.register_form)
                        
             elif self.current_section == "reload":
@@ -202,6 +230,7 @@ class MainInterface(QtWidgets.QWidget):
         
         else:
             if card != Config().get_conf("ADMIN_CARD"):
+                logger.info("Tarjeta de admin incorrecta: %s", self.current_card)
                 self.stack.setCurrentWidget(self.incorrect_admin)
                 return
             
@@ -209,6 +238,11 @@ class MainInterface(QtWidgets.QWidget):
                 self.register_action()
             
             elif self.current_section == "reload":
+                client_name = user_info(self.current_card)["name"]
+                
+                logger.info("Realizando carga de %s en %s:%s", 
+                            self.extra_balance, self.current_card, client_name)
+                
                 add_balance(self.current_card, self.extra_balance)
                 new_balance = user_balance(self.current_card)
                 
@@ -216,13 +250,17 @@ class MainInterface(QtWidgets.QWidget):
                 self.stack.setCurrentWidget(self.charge_ok)            
             
             elif self.current_section == "info":
+                user_name = user_info(self.current_card)["name"]
+                
+                logger.info("Mostrando info de %s:%s", 
+                            self.current_card, user_name)
                 
                 info = list(user_info(self.current_card).values())
                 balance = user_balance(self.current_card)
                 
                 balance = balance if balance is not None else ""
                 
-                args = info + [self.current_card, balance]
+                args = info + [hide_card(self.current_card), balance]
                 
                 self.client_info.set_user_info(*args)
                 self.stack.setCurrentWidget(self.client_info)
@@ -237,8 +275,12 @@ class MainInterface(QtWidgets.QWidget):
         self.stack.setCurrentWidget(self.confirm_charge)
        
     def register_action(self):
-        save_new_user(self.current_card, self.current_name, 
-                      self.current_rut, self.current_company)
+        user_data = [self.current_card, self.current_name, 
+                     self.current_rut, self.current_company, 
+                     self.current_phone]
+        
+        logger.info("Registrando nuevo usuario: %s", " - ".join(user_data))
+        save_new_user(*user_data)
         
         self.clear_user_info()
         self.stack.setCurrentWidget(self.register_ok)

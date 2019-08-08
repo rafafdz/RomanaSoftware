@@ -9,8 +9,8 @@ class ClientInfo(BasePanel):
         for i in range(5):
             header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
         
-    def set_user_info(self, name, rut, company, card_id, balance):
-        data = [name, rut, company, card_id, balance]
+    def set_user_info(self, name, rut, company, phone, card_id, balance):
+        data = [name, rut, company, card_id, "+" + str(phone), balance]
         
         for index, value in enumerate(data):
             item = QTableWidgetItem(str(value))

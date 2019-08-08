@@ -28,9 +28,9 @@ class UseCard(BasePanel):
         self._set_reader_inactive()
         self.main_interface.change_card_timeout()
         
-    def _error_action(self):
+    def _error_action(self, error_msg):
         self._set_reader_inactive()
-        self.main_interface.change_reader_error()
+        self.main_interface.change_reader_error(error_msg)
         
     def _card_read_action(self, card):
         self._set_reader_inactive()

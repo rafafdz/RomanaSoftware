@@ -30,10 +30,17 @@
    <item>
     <widget class="QLabel" name="error_lbl">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ERROR EN LECTOR&lt;/p&gt;&lt;p&gt;Intente reconectarlo&lt;/p&gt;&lt;p&gt;Si el problema persiste, comunicarse con el dueño&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ERROR EN LECTOR DE TARJETAS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="desc_lbl">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Intente reconectarlo&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Si el problema persiste, comunicarse con el dueño&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>

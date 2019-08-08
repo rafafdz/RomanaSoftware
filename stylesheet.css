@@ -20,11 +20,16 @@ QWidget{
     min-height: 150;
 }
 
-#instruction_lbl {
+#instruction_lbl, #success_lbl {
     font-size: 50px;
 }
 
 #body_container > #button_container > QPushButton{
     /* padding: 400px 0px 400px 0px; */
     font-size: 50px;
+}
+
+#error_lbl{
+    font-size: 50px;
+    color: red;
 }

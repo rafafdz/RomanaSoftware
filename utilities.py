@@ -31,8 +31,8 @@ def _save_info(info_dict):
     path = CONFIG.get_conf("INFO_PATH")
     _save_json(path, info_dict)
 
-def save_new_user(card_id, name, rut, company):
-    new_info = {"name" : name, "rut" : rut, "company" : company}
+def save_new_user(card_id, name, rut, company, phone):
+    new_info = {"name" : name, "rut" : rut, "company" : company, "phone" : phone}
     
     if card_id == CONFIG.get_conf("ADMIN_CARD"):
         return

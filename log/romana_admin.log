@@ -1,0 +1,258 @@
+08-08-2019 13:25:59 INFO     Probando
+08-08-2019 13:37:10 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:36 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:38 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:40 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:41 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:42 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:44 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:45 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:48 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:49 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:51 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:57 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:58 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:59 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:38:59 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:00 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:00 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:00 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:01 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:01 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:02 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:03 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:04 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:06 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:07 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:08 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:09 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:10 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:11 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:13 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:16 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:16 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:18 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:19 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:20 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:27 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 13:39:28 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:23:38 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:23:40 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:23:42 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:28:51 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:28:53 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:28:55 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:28:57 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:28:59 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:29:01 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:29:03 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:29:06 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:29:10 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:43:10 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:43:12 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:43:13 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:43:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:47:17 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:47:18 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:47:21 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 15:50:11 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:23:17 INFO     Tarjeta cliente detectada: 133B0A1E
+08-08-2019 16:23:17 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:23:17 INFO     Tarjeta cliente detectada: 133B0A1E
+08-08-2019 16:23:17 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:23:20 INFO     Tarjeta cliente detectada: 133B0A1E
+08-08-2019 16:23:20 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:23:20 INFO     Tarjeta cliente detectada: 133B0A1E
+08-08-2019 16:23:20 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:23:22 INFO     Tarjeta cliente detectada: 133B0A1E
+08-08-2019 16:23:22 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:23:48 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:23:48 INFO     Accedido a reload con tarjeta no registrada : A3490F1E
+08-08-2019 16:26:12 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:26:13 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:26:15 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:26:17 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:26:56 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:26:56 INFO     Tarjeta de admin incorrecta: A3490F1E
+08-08-2019 16:34:09 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:34:32 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:34:32 INFO     Tarjeta de admin incorrecta: A3490F1E
+08-08-2019 16:34:38 INFO     Realizando carga de 4500.0 en A3490F1E:rafita
+08-08-2019 16:34:46 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:34:50 INFO     Mostrando info de A3490F1E:rafita
+08-08-2019 16:37:18 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:37:21 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:37:24 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:38:05 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:44:38 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:44:42 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:49 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:51 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:52 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:53 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:55 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:57 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:44:58 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:45:00 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:45:08 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:45:09 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:45:10 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:45:12 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:46:56 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:47:02 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:49:56 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:50:11 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:50:16 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:16 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:50:19 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:19 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:50:22 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:22 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:50:29 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:29 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:50:32 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:32 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:50:34 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:50:34 CRITICAL Error en Lector: Cant clear buffer
+08-08-2019 16:51:52 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:51:57 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:08 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:52:11 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:11 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:21 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:21 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:29 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:29 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:31 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:31 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:36 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:36 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:42 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:42 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:43 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:43 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:45 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:45 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:47 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:47 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:48 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:48 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:52:50 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:52:50 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:53:06 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:53:09 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:53:16 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:53:18 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:53:19 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:54:28 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:54:37 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:54:37 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:54:51 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:54:51 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:54:53 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:54:53 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:54:55 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:54:55 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:55:01 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:55:29 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:55:54 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:55:54 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:55:59 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:55:59 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:56:01 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:56:01 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:56:12 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:56:12 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:56:14 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:56:14 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:56:15 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:56:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:56:52 INFO     Tarjeta de admin en vez de cliente detectada
+08-08-2019 16:56:54 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 16:57:10 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 16:57:12 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:12 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:15 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:17 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:17 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:19 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:19 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:20 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:20 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:22 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:22 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:24 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:24 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:25 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:25 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:26 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:26 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:27 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:27 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:28 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:28 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:57:29 CRITICAL Error en Lector: Detected not working
+08-08-2019 16:57:29 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:58:10 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:58:12 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:58:14 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:58:15 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 16:58:16 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:01 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:01:06 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:06 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:14 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:14 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:16 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:16 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:18 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:18 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:19 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:19 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:20 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:20 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:22 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:22 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:23 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:23 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:25 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:25 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:01:26 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:01:26 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:02:24 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:02:39 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:02:42 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:02:42 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:02:49 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:02:49 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:04:17 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:04:29 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:04:32 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:04:32 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:04:33 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:04:34 CRITICAL Error en Lector: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+08-08-2019 17:15:33 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:15:35 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:15:35 CRITICAL Error en Lector: [Errno 2] could not open port /dev/sensor_admin: [Errno 2] No such file or directory: '/dev/sensor_admin'
+08-08-2019 17:15:41 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:16:09 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:16:09 CRITICAL Error en Lector: [Errno 2] could not open port /dev/sensor_admin: [Errno 2] No such file or directory: '/dev/sensor_admin'
+08-08-2019 17:16:15 CRITICAL Error en Lector: Detected not working
+08-08-2019 17:17:43 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:17:46 CRITICAL Error en Lector: [Errno 2] could not open port /dev/sensor_admin: [Errno 2] No such file or directory: '/dev/sensor_admin'
+08-08-2019 17:17:59 CRITICAL Error en Lector: read failed: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+08-08-2019 17:18:02 CRITICAL Error en Lector: [Errno 2] could not open port /dev/sensor_admin: [Errno 2] No such file or directory: '/dev/sensor_admin'
+08-08-2019 17:20:30 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 17:20:33 INFO     Mostrando info de A3490F1E:rafita
+08-08-2019 17:56:32 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 17:59:21 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 17:59:21 INFO     Intentando re registrar tarjeta : A3490F1E
+08-08-2019 18:16:27 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 18:16:29 INFO     Mostrando info de A3490F1E:rafita
+08-08-2019 18:16:34 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 18:16:47 INFO     Tarjeta cliente detectada: A3490F1E
+08-08-2019 18:16:47 INFO     Tarjeta de admin incorrecta: A3490F1E
+08-08-2019 18:16:51 INFO     Realizando carga de 12123.0 en A3490F1E:rafita
