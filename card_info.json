@@ -1,1 +1,17 @@
-{"A3490F1E": {"name": "Camionero Prueba 1", "rut": "20.452.102-2", "company": "Chilectra"}, "12FAD385": {"name": "Camionerito xd 23", "rut": "5.544.337-8", "company": "frunita de las frutas xdddd"}}
+{
+    "12FAD385": {
+        "name": "Camionerito xd 23",
+        "rut": "5.544.337-8",
+        "company": "frunita de las frutas xdddd"
+    },
+    "0F9E5DDE": {
+        "name": "Julio Sepeda",
+        "rut": "10.512.403-1",
+        "company": "agricola tucuman"
+    },
+    "A3490F1E": {
+        "name": "Camionero test",
+        "rut": "19.640.029-k",
+        "company": "langosta spa"
+    }
+}

@@ -2,7 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator
 from config import Config
-from utilities import save_new_user, user_info, user_balance, add_balance
+from utilities import (save_new_user, user_info, 
+                       user_balance, add_balance, hide_card)
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "panels"))
@@ -17,6 +18,7 @@ from confirm_register import ConfirmRegister
 from register_ok import RegisterOk
 from reader_error import ReaderError
 from charge_form import ChargeForm
+from confirm_charge import ConfirmCharge
 from charge_ok import ChargeOk
 from not_detected import NotDetected
 from client_info import ClientInfo
@@ -25,6 +27,7 @@ class MainInterface(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("RomanaSoftware | Admin")
+        self.setGeometry(0, 0, 1366, 768)
         self.init_elements()
         
     def _load_style(self):
@@ -41,12 +44,20 @@ class MainInterface(QtWidgets.QWidget):
         self.current_company = None
         self.extra_balance = None        
     
-        self.title_lbl = QtWidgets.QLabel()
+        self.title_lbl = QtWidgets.QLabel(objectName="title_lbl")
         self.title_lbl.setAlignment(QtCore.Qt.AlignCenter)
+    
+        self.title_container = QtWidgets.QWidget(objectName="title_container")
+        hbox = QtWidgets.QHBoxLayout()
+        hbox.addWidget(self.title_lbl)
+        self.title_container.setLayout(hbox)
+    
         self.stack = QtWidgets.QStackedWidget()
         vbox = QtWidgets.QVBoxLayout()
-        vbox.addWidget(self.title_lbl)
+        vbox.addWidget(self.title_container)
         vbox.addWidget(self.stack)
+        # vbox.setSpacing(0)
+        vbox.setContentsMargins(0, 0, 0, 0)
         self.setLayout(vbox)
             
         self.main_interface   = AdminInterface(self)
@@ -59,6 +70,7 @@ class MainInterface(QtWidgets.QWidget):
         self.register_ok      = RegisterOk(self)
         self.reader_error     = ReaderError(self)
         self.charge_form      = ChargeForm(self)
+        self.confirm_charge   = ConfirmCharge(self)
         self.charge_ok        = ChargeOk(self)
         self.not_detected     = NotDetected(self)
         self.client_info      = ClientInfo(self)
@@ -73,6 +85,7 @@ class MainInterface(QtWidgets.QWidget):
         self.stack.addWidget(self.register_ok)
         self.stack.addWidget(self.reader_error)
         self.stack.addWidget(self.charge_form)
+        self.stack.addWidget(self.confirm_charge)
         self.stack.addWidget(self.charge_ok)
         self.stack.addWidget(self.not_detected)
         self.stack.addWidget(self.client_info)
@@ -80,7 +93,7 @@ class MainInterface(QtWidgets.QWidget):
         self.change_main()
         
         # Developing porpouses
-        #self.stack.setCurrentWidget(self.charge_form)
+        self.stack.setCurrentWidget(self.charge_form)
         
         
     def set_title(self, title):
@@ -103,7 +116,7 @@ class MainInterface(QtWidgets.QWidget):
         
     def change_register(self):
         self.current_section = "register"
-        self.set_title("Registro")
+        self.set_title("Registrar Tarjeta")
         self.change_card_client()
         
     def change_charge(self):
@@ -117,7 +130,7 @@ class MainInterface(QtWidgets.QWidget):
         self.change_card_client()
         
     def change_main(self):
-        self.set_title("Romana")
+        self.set_title("Menu Principal")
         self.current_section = None
         self.stack.setCurrentWidget(self.main_interface)
         
@@ -130,8 +143,8 @@ class MainInterface(QtWidgets.QWidget):
             self.stack.setCurrentWidget(self.reader_error) 
 
     def change_confirm_register(self):
-        self.confirm_register.card_lbl.setText(self.current_card)
-        self.confirm_register.name_lbl.setText(self.current_name)
+        self.confirm_register.set_card(hide_card(self.current_card))
+        self.confirm_register.set_name(self.current_name)
         self.stack.setCurrentWidget(self.confirm_register)
         
     def set_user_info(self, name, rut, company):
@@ -158,6 +171,12 @@ class MainInterface(QtWidgets.QWidget):
          
         if self.use_card.client_card:
             self.current_card = card
+            
+            if self.current_card == Config().get_conf("ADMIN_CARD"):
+                print("Tarjeta de admin detectada")
+                self.change_card_client()
+                return    
+            
             if self.current_section in ("reload", "info") and not user_info(card):
                 self.stack.setCurrentWidget(self.not_registered)
                 return
@@ -210,7 +229,12 @@ class MainInterface(QtWidgets.QWidget):
                 
     def add_balance_action(self, balance):
         self.extra_balance = balance
-        self.change_card_admin()
+        
+        user_name = user_info(self.current_card)["name"]
+        self.confirm_charge.set_name(user_name)
+        self.confirm_charge.set_card(hide_card(self.current_card))
+        self.confirm_charge.set_balance(self.extra_balance)
+        self.stack.setCurrentWidget(self.confirm_charge)
        
     def register_action(self):
         save_new_user(self.current_card, self.current_name, 

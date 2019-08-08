@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>confirm_charge</class>
+ <widget class="QWidget" name="confirm_charge">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>835</width>
-    <height>564</height>
+    <width>677</width>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,15 +22,15 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>135</height>
+       <height>131</height>
       </size>
      </property>
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="detected_lbl">
+    <widget class="QLabel" name="confirm_lbl">
      <property name="text">
-      <string>Tarjeta Detectada</string>
+      <string>¿Seguro que quiere realizar la siguiente carga?</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -38,10 +38,59 @@
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="detected_container" native="true">
+    <widget class="QWidget" name="widget_2" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <spacer name="left_space4">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="card_text_lbl">
+        <property name="text">
+         <string>ID Tarjeta:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="card_lbl">
+        <property name="text">
+         <string>AC0B0XXXX</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_3" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <spacer name="horizontalSpacer_3">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -56,25 +105,22 @@
       <item>
        <widget class="QLabel" name="name_text_lbl">
         <property name="text">
-         <string>Nombre:</string>
+         <string>Cliente:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="name_lbl">
         <property name="text">
-         <string>Admin</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         <string>TextLabel</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="right_space4">
+       <spacer name="horizontalSpacer_4">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -91,9 +137,9 @@
    </item>
    <item>
     <widget class="QWidget" name="balance_container" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <spacer name="left_space3">
+       <spacer name="horizontalSpacer_5">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -106,12 +152,9 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="balance_text_lbl">
+       <widget class="QLabel" name="balance_txt_lbl">
         <property name="text">
-         <string>Monto Actual:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <string>Monto: $</string>
         </property>
        </widget>
       </item>
@@ -124,12 +167,12 @@
          </font>
         </property>
         <property name="text">
-         <string>5000</string>
+         <string>TextLabel</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="right_space3">
+       <spacer name="horizontalSpacer_6">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -142,75 +185,6 @@
        </spacer>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="charge_lbl">
-     <property name="text">
-      <string>Ingrese cuanto desea cargar</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="entry_container" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <spacer name="left_space2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="cash_lbl">
-        <property name="text">
-         <string>$</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="money_entry"/>
-      </item>
-      <item>
-       <spacer name="right_space2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="error_lbl">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
     </widget>
    </item>
    <item>
@@ -230,7 +204,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="charge_btn">
+       <widget class="QPushButton" name="confirm_btn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -238,7 +212,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Cargar</string>
+         <string>Continuar</string>
         </property>
        </widget>
       </item>
@@ -273,7 +247,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>135</height>
+       <height>131</height>
       </size>
      </property>
     </spacer>

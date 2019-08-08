@@ -6,3 +6,10 @@ class BasePanel(QtWidgets.QWidget):
         super().__init__()
         uic.loadUi(ui_path, self)
         self.main_interface = main_interface
+        self._enable_enter_buttons()
+        
+        
+    def _enable_enter_buttons(self):
+        buttons = self.findChildren(QtWidgets.QPushButton)
+        for button in buttons:
+            button.setAutoDefault(True)

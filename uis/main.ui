@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>main</class>
- <widget class="QWidget" name="main">
+ <class>main_interface</class>
+ <widget class="QWidget" name="main_interface">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,16 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLabel#main_title{
-	font-size: 30px
-}
-
-QPushButton{
-    font-size:25px;
-    padding-left:20px;
-    padding-right:20px;
-
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

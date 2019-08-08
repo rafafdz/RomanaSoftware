@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>register_form</class>
+ <widget class="QWidget" name="register_form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>450</height>
+    <height>679</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
    <item>
     <widget class="QLabel" name="instruction_lbl">
      <property name="text">
-      <string>Ingresar Datos del Cliente</string>
+      <string>Ingrese los Datos del Cliente</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
