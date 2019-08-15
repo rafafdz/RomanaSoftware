@@ -27,6 +27,7 @@ public class MessageAndButtonPanel extends InteractivePanel {
     private Style.RoundedButton firstButton; // Will be at the left
     private Style.RoundedButton secondButton; // Will be at the right
 
+
     private Insets textMargins = new Insets(10, 10, 10, 10);
     private int titleSpacing = 30;
     private int sideSpacing = 200;
@@ -44,6 +45,14 @@ public class MessageAndButtonPanel extends InteractivePanel {
 
     public MessageAndButtonPanel(int timeout) {
         super(timeout);
+    }
+    
+    public Style.RoundedButton getFirstButton() {
+        return firstButton;
+    }
+
+    public Style.RoundedButton getSecondButton() {
+        return secondButton;
     }
 
     public void setText(String text) {

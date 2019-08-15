@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  */
 public class Configuration {
 
-    public static final String SOFTWARE_VERSION = "0.9";
+    public static final String SOFTWARE_VERSION = "0.9.5";
     
     private static final Logger LOGGER = Logger.getLogger(Configuration.class.getName());
     private static final String CONFIG_PATH = "config/romana_software.properties";
@@ -38,11 +38,13 @@ public class Configuration {
     // Default definitions
     private static final String BALANCE_PATH = "db/cards_balance.json";
     private static final String WEIGHT_INFO_FILENAME = "info.json";
+    private static final String WEB_DOMAIN = "www.romana.tk";
     private static final String CARD_PORT = "TEST";
     private static final String SCALE_PORT = "TEST";
     private static final String TICKET_VENDOR_ID = "TEST";
     private static final String TICKET_PRODUCT_ID = "TEST";
-    private static final String WEB_DOMAIN = "www.romana.tk";
+    private static final int TICKET_IN_EP = 1;
+    private static final int TICKET_OUT_EP = 1;
     private static final int HOUR_LIMIT_SECOND_PHASE = 24;
     private static final int WEIGHT_THRESHOLD = 300;
     private static final int DIFFERENCE_THRESHOLD = 30;

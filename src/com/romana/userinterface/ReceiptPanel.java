@@ -46,7 +46,7 @@ public class ReceiptPanel extends InteractivePanel {
     }
 
     // For dev purpouses only!
-    public void gen(WeightInfo actualWeightInfo) {
+    private void gen(WeightInfo actualWeightInfo) {
         weightTable.generateFrom(actualWeightInfo);
 
         String url = actualWeightInfo.getUrl();
@@ -60,17 +60,11 @@ public class ReceiptPanel extends InteractivePanel {
 
         String url = actualWeightInfo.getUrl();
         urlLabel.setText(WEB_DOMAIN + "/" + url);
-
-    }
-    
-    @Override
-    public void actionOnShowDebug(){
-        
     }
 
     @Override
     public void timeoutAction() {
-        systemActions.returnToMainMenu();
+        interfaceActions.switchPanel(PullTicketPanel.class);
     }
 
     private void initComponents() {
@@ -173,15 +167,15 @@ public class ReceiptPanel extends InteractivePanel {
             JFrame mainFrame = new JFrame();
             ReceiptPanel summary = new ReceiptPanel();
             WeightInfo info = new WeightInfo(SystemOperations.WeightType.AXIS);
-            info.addWeight(12.8);
-            info.addWeight(9.12);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
-            info.addWeight(19.32);
+            info.addWeight(41);
+//            info.addWeight(9.12);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
+//            info.addWeight(19.32);
             info.finishProcess();
             System.out.println(info.getWeightResume());
             info.url = "uFsx12d";

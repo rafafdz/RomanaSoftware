@@ -24,7 +24,7 @@ nbproject/*
 log/
 weights/
 store/
-dist/
 config/
 db/
 res/ticket_python/venv
+external/

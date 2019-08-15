@@ -22,7 +22,7 @@ public class WeightInfo {
     private final Date date;
     private String plate;
     private final ArrayList<DatedWeight> weights = new ArrayList<>();
-    private double weightResume; // Based on the type. Can be seen as a final weight.
+    private int weightResume; // Based on the type. Can be seen as a final weight.
     private int totalPrice;
     private String cardId;
     private Integer axisNumber;
@@ -47,8 +47,20 @@ public class WeightInfo {
         return date;
     }
     
+    public int getFirstWeight(){
+        return weights.get(0).weight;
+    }
+    
     public Date getFirstWeightDate(){
         return weights.get(0).date;
+    }
+    
+    public int getSecondWeight(){
+        return weights.get(1).weight;
+    }
+    
+    public Date getSecondWeightDate(){
+        return weights.get(1).date;
     }
     
     public String getPlate() {
@@ -116,7 +128,7 @@ public class WeightInfo {
         return type == WeightType.TWO_PHASE && secondCondition;
     }
 
-    public void addWeight(double weight) {
+    public void addWeight(int weight) {
         weights.add(new DatedWeight(weight, new Date()));
         if (type == AXIS) {
             nextAxis++;
@@ -135,12 +147,11 @@ public class WeightInfo {
 
             case TWO_PHASE:
 
-                double difference = Math.abs(weights.get(1).weight - weights.get(0).weight);
-                weightResume = CommonUtils.roundTwoDecimals(difference);
+                weightResume = Math.abs(weights.get(1).weight - weights.get(0).weight);
                 break;
 
             case AXIS:
-                double weightSum = 0;
+                int weightSum = 0;
                 for (DatedWeight datedWeight : weights) {
                     weightSum += datedWeight.weight;
                 }
@@ -155,10 +166,10 @@ public class WeightInfo {
 
     public class DatedWeight {
 
-        public Double weight;
+        public int weight;
         public Date date;
 
-        public DatedWeight(Double weight, Date date) {
+        public DatedWeight(int weight, Date date) {
             this.weight = weight;
             this.date = date;
         }

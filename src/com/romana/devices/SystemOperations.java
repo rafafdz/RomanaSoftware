@@ -31,10 +31,16 @@ public class SystemOperations {
     private static final String WEIGHT_FILENAME = Configuration.getStringConfig("WEIGHT_INFO_FILENAME");
     private static final String CARD_PORT = Configuration.getStringConfig("CARD_PORT");
     private static final String SCALE_PORT = Configuration.getStringConfig("SCALE_PORT");
+    private static final String TICKET_VENDOR_ID = Configuration.getStringConfig("TICKET_VENDOR_ID");
+    private static final String TICKET_PRODUCT_ID = Configuration.getStringConfig("TICKET_PRODUCT_ID");
+    private static final int TICKET_IN_EP = Configuration.getIntConfig("TICKET_IN_EP");
+    private static final int TICKET_OUT_EP = Configuration.getIntConfig("TICKET_OUT_EP");
+
     private static final int WEIGHT_THRESHOLD = Configuration.getIntConfig("WEIGHT_THRESHOLD");
     private static final int DIFFERENCE_THRESHOLD = Configuration.getIntConfig("DIFFERENCE_THRESHOLD");
     private ScaleDevice scaleDevice;
     private CardDevice cardDevice;
+    private TicketDevice ticketDevice;
 
     public SystemOperations() {
         generateWeightDirs();
@@ -52,9 +58,13 @@ public class SystemOperations {
         this.cardDevice = cardDevice;
     }
 
+    public void setTicketDevice(TicketDevice ticketDevice) {
+        this.ticketDevice = ticketDevice;
+    }
+
     public void initializeAllDevices() throws SerialException {
 
-        // TO DO: CREATE SEPARATE CLASSES!
+        // TO DO: CREATE SEPARATE CLASSES or clean up at least!
         if (CARD_PORT.equals("TEST")) {
             this.cardDevice = new CardDevice() {
 
@@ -89,13 +99,42 @@ public class SystemOperations {
             this.scaleDevice = new ScaleDevice(SCALE_PORT);
         }
 
+        if (TICKET_VENDOR_ID.equals("TEST")) {
+            this.ticketDevice = new TicketDevice() {
+                
+                @Override
+                public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
+                    return true;
+                }
+                
+                @Override
+                public boolean printTwoPhaseTicket(String plate, String url, int totalPrice, int firstWeight,
+                    int lastWeight, String firstDate, String lastDate){
+                    return true;
+                }
+                
+                @Override
+                public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights){
+                    return true;
+                }
+
+                @Override
+                public boolean isWorking() {
+                    return true;
+                }
+            };
+        } else {
+            this.ticketDevice = new TicketDevice(TICKET_VENDOR_ID, TICKET_PRODUCT_ID, 
+                    TICKET_IN_EP, TICKET_OUT_EP);
+        }
+
     }
     // public ScaleResponse simpleWeight(String plate, String cardId)
 
     public ScaleResponse simpleWeight(WeightInfo newSimple) throws SerialException,
             DatabaseException {
 
-        double weight = scaleDevice.getWeight();
+        int weight = scaleDevice.getWeight();
         if (!isValidWeight(weight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
         }
@@ -112,7 +151,7 @@ public class SystemOperations {
             DatabaseException {
         // There can be only one Two-Phase process ongoing per plate!
 
-        double firstWeight = scaleDevice.getWeight();
+        int firstWeight = scaleDevice.getWeight();
 
         if (!isValidWeight(firstWeight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
@@ -141,16 +180,14 @@ public class SystemOperations {
             throw new DatabaseException("Error while creating TwoPhase file", ex);
         }
     }
-    
-    
-    public void discardTwoPhase(WeightInfo twoPhase){
+
+    public void discardTwoPhase(WeightInfo twoPhase) {
         String plate = twoPhase.getPlate();
         Path dirPath = Paths.get(PROCESS_PATH, plate);
         Path filePath = dirPath.resolve(WEIGHT_FILENAME);
         filePath.toFile().delete();
         dirPath.toFile().delete();
     }
-    
 
     /**
      * Continue the weighing process. Assumes that all the plate / card verifications have already
@@ -166,7 +203,7 @@ public class SystemOperations {
 
         String plate = toContinue.getPlate();
 
-        double secondWeight = scaleDevice.getWeight();
+        int secondWeight = scaleDevice.getWeight();
         if (!isValidWeight(secondWeight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
         }
@@ -199,7 +236,7 @@ public class SystemOperations {
 
     public ScaleResponse nextAxis(WeightInfo weightAxis) throws SerialException {
 
-        double weight = scaleDevice.getWeight();
+        int weight = scaleDevice.getWeight();
         if (!isValidWeight(weight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
         }
@@ -255,7 +292,8 @@ public class SystemOperations {
         String infoPath = Paths.get(PROCESS_PATH).resolve(plate).resolve(WEIGHT_FILENAME).toString();
 
         try {
-            return CommonUtils.deserializeFromFile(infoPath, WeightInfo.class);
+            return CommonUtils.deserializeFromFile(infoPath, WeightInfo.class
+            );
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
             return null;
@@ -311,6 +349,24 @@ public class SystemOperations {
 
     public String getCardId() throws SerialException {
         return cardDevice.getCardID();
+    }
+
+    public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
+        System.out.println(plate);
+        System.out.println(url);
+        System.out.println(totalPrice);
+        System.out.println(weight);
+        return ticketDevice.printSimpleTicket(plate, url, totalPrice, weight);
+    }
+    
+    public boolean printTwoPhaseTicket(String plate, String url, int totalPrice, int firstWeight,
+            int lastWeight, String firstDate, String lastDate){
+        return ticketDevice.printTwoPhaseTicket(plate, url, totalPrice, 
+                firstWeight, lastWeight, firstDate, lastDate);
+    }
+    
+    public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights){
+        return ticketDevice.printAxisTicket(plate, url, totalPrice, weights);
     }
 
     public static enum WeightType {

@@ -112,7 +112,6 @@ public class CardReadPanel extends InteractivePanel {
     @Override
     public void timeoutAction() {
         // Set text of the error panel and switch to it
-
         systemActions.returnToMainMenu();
     }
 
@@ -124,7 +123,7 @@ public class CardReadPanel extends InteractivePanel {
 
         @Override
         protected String doInBackground() throws SerialException {
-            LOGGER.log(Level.INFO, "Started ReadCard worker");
+            LOGGER.log(Level.FINE, "Started ReadCard worker");
 
             SystemOperations systemOps = systemActions.getSystemOperations();
             return systemOps.getCardId();
@@ -173,7 +172,6 @@ public class CardReadPanel extends InteractivePanel {
                     interfaceActions.switchPanel(TimeExceededPanel.class);
                     return;
                 }
-
             }
 
             if (!cardDatabase.hasMoney(cardID, actualWeight.getSalePrice())) {
