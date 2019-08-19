@@ -5,7 +5,8 @@ QPushButton{
 }
 
 QWidget{
-    font-size: 40px;
+    font-size: 30px;
+    font-family: 'sans';
 }
 
 #title_lbl{
@@ -21,15 +22,15 @@ QWidget{
 }
 
 #instruction_lbl, #success_lbl {
-    font-size: 50px;
+    font-size: 40px;
 }
 
 #body_container > #button_container > QPushButton{
     /* padding: 400px 0px 400px 0px; */
-    font-size: 50px;
+    font-size: 40px;
 }
 
 #error_lbl{
-    font-size: 50px;
+    font-size: 40px;
     color: red;
 }

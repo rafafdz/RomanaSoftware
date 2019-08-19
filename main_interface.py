@@ -35,7 +35,7 @@ class MainInterface(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("RomanaSoftware | Admin")
-        self.setGeometry(0, 0, 1366, 768)
+        self.setGeometry(0, 0, 1360, 768)
         self.init_elements()
         
     def _load_style(self):
@@ -102,7 +102,7 @@ class MainInterface(QtWidgets.QWidget):
         self.change_main()
         
         # Developing porpouses
-        self.stack.setCurrentWidget(self.register_form)
+        self.stack.setCurrentWidget(self.client_info)
         
         
     def set_title(self, title):
@@ -279,7 +279,9 @@ class MainInterface(QtWidgets.QWidget):
                      self.current_rut, self.current_company, 
                      self.current_phone]
         
-        logger.info("Registrando nuevo usuario: %s", " - ".join(user_data))
+        logger.info("Registrando nuevo usuario: %s", 
+                    " - ".join(map(str, user_data)))
+        
         save_new_user(*user_data)
         
         self.clear_user_info()
