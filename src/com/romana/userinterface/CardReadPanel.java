@@ -96,8 +96,7 @@ public class CardReadPanel extends InteractivePanel {
     @Override
     public void actionOnShow() {
         WeightInfo actualWeight = systemActions.getActualWeightInfo();
-
-        setPrice(actualWeight.getTotalPrice());
+        setPrice(actualWeight.getPriceToPay());
         new ReadCardWorker().execute();
     }
 
@@ -123,7 +122,7 @@ public class CardReadPanel extends InteractivePanel {
 
         @Override
         protected String doInBackground() throws SerialException {
-            LOGGER.log(Level.FINE, "Started ReadCard worker");
+           LOGGER.log(Level.FINE, "Started ReadCard worker");
 
             SystemOperations systemOps = systemActions.getSystemOperations();
             return systemOps.getCardId();

@@ -86,8 +86,8 @@ public class SystemOperations {
             this.scaleDevice = new ScaleDevice() {
                 @Override
                 public int getWeight() {
-                    CommonUtils.sleep(1500);
-                    return 2000;
+                    CommonUtils.sleep(1000);
+                    return (int) CommonUtils.randomDouble(1000.0, 2500.0);
                 }
 
                 @Override
@@ -108,7 +108,7 @@ public class SystemOperations {
                 }
                 
                 @Override
-                public boolean printTwoPhaseTicket(String plate, String url, int totalPrice, int firstWeight,
+                public boolean printTwoPhaseFinalTicket(String plate, String url, int totalPrice, int firstWeight,
                     int lastWeight, String firstDate, String lastDate){
                     return true;
                 }
@@ -135,6 +135,7 @@ public class SystemOperations {
             DatabaseException {
 
         int weight = scaleDevice.getWeight();
+        LOGGER.log(Level.INFO, "Weight Simple read {0} kg", weight);
         if (!isValidWeight(weight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
         }
@@ -236,20 +237,20 @@ public class SystemOperations {
 
     public ScaleResponse nextAxis(WeightInfo weightAxis) throws SerialException {
 
+        CommonUtils.sleep(500); // Wait for stabilization of value
         int weight = scaleDevice.getWeight();
         if (!isValidWeight(weight)) {
             return new ScaleResponse(WEIGHT_TOO_LOW);
         }
 
-        int numberOfWeights = weightAxis.getNumberOfWeights();
-        if (numberOfWeights > 0) {
-            double lastWeight = weightAxis.getWeights().get(numberOfWeights - 1).weight;
-            if (Math.abs(lastWeight - weight) < DIFFERENCE_THRESHOLD) {
-                return new ScaleResponse(NOT_ENOUGH_DIFFERENCE);
-            }
+        int weightSum = weightAxis.getWeightSum();
+       
+        int difference = Math.abs(weight - weightSum);
+        if (difference < DIFFERENCE_THRESHOLD) {
+            return new ScaleResponse(NOT_ENOUGH_DIFFERENCE);
         }
 
-        weightAxis.addWeight(weight);
+        weightAxis.addWeight(difference); // Only the difference!
         return new ScaleResponse(OPERATION_OK);
     }
 
@@ -352,16 +353,17 @@ public class SystemOperations {
     }
 
     public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
-        System.out.println(plate);
-        System.out.println(url);
-        System.out.println(totalPrice);
-        System.out.println(weight);
         return ticketDevice.printSimpleTicket(plate, url, totalPrice, weight);
     }
     
-    public boolean printTwoPhaseTicket(String plate, String url, int totalPrice, int firstWeight,
+    public boolean printTwoPhaseFirstTicket(String plate, String url, int totalPrice, int firstWeight,
+            String firstDate){
+        return ticketDevice.printTwoPhaseFirstTicket(plate, url, totalPrice, firstWeight, firstDate);
+    }
+    
+    public boolean printTwoPhaseFinalTicket(String plate, String url, int totalPrice, int firstWeight,
             int lastWeight, String firstDate, String lastDate){
-        return ticketDevice.printTwoPhaseTicket(plate, url, totalPrice, 
+        return ticketDevice.printTwoPhaseFinalTicket(plate, url, totalPrice, 
                 firstWeight, lastWeight, firstDate, lastDate);
     }
     

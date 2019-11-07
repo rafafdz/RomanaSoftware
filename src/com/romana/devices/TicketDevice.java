@@ -71,11 +71,13 @@ public class TicketDevice extends ExternalDevice {
         // To do: Fix hang when there is no paper!
         String newCommand = String.format("source venv/bin/activate && python %s %s %s %s %s %s",
                 PYTHON_SCRIPT, vendorId, deviceId, inEp, outEp, command);
+        System.out.println("Command " + newCommand);
         return executeCommand(newCommand);
     }
 
     private String generateBaseArg(String plate, String url, int totalPrice) {
-        return String.format("--plate %s --url %s --price %s", plate, url, totalPrice);
+        // Hardcoded to print 2 copies of each!
+        return String.format("--plate %s --url %s --price %s --copies 2", plate, url, totalPrice);
     }
     
     public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
@@ -84,14 +86,24 @@ public class TicketDevice extends ExternalDevice {
         return executeTicketCommand(newCommand) == 0;
     }
     
-    public boolean printTwoPhaseTicket(String plate, String url, int totalPrice, int firstWeight,
+    public boolean printTwoPhaseFirstTicket(String plate, String url, int totalPrice, 
+            int firstWeight, String firstDate){
+        
+        String base = generateBaseArg(plate, url, totalPrice);
+        String newPart = String.format("-wt TWO_PHASE_FIRST -fw %s -fd '%s'", firstWeight, 
+                firstDate);
+        String newCommand = base + " " + newPart;
+        return executeTicketCommand(newCommand) == 0;
+    }
+    
+    
+    public boolean printTwoPhaseFinalTicket(String plate, String url, int totalPrice, int firstWeight,
             int lastWeight, String firstDate, String lastDate){
         
         String base = generateBaseArg(plate, url, totalPrice);
-        String newPart = String.format("-wt TWO_PHASE -fw %s -fd '%s' -lw %s -ld '%s'", firstWeight, 
+        String newPart = String.format("-wt TWO_PHASE_FINAL -fw %s -fd '%s' -lw %s -ld '%s'", firstWeight, 
                 firstDate, lastWeight, lastDate);
         String newCommand = base + " " + newPart;
-        System.out.println(newCommand);
         return executeTicketCommand(newCommand) == 0;
     }
     

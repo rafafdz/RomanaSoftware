@@ -139,7 +139,6 @@ public class WeighingPanel extends InteractivePanel {
 
             } else if (actualWeight.getType() == WeightType.TWO_PHASE){
                 interfaceActions.switchPanel(FirstPhaseFinishedPanel.class);
-                //System.out.println("To do: Show message that first phase finished");
             }
         }
     }

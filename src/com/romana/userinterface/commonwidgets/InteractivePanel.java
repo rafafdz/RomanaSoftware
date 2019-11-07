@@ -50,7 +50,7 @@ public class InteractivePanel extends TimedPanel {
     
     public final void ShowDebugAction(){
         if (hasTimer()){
-            stopTimer();
+            stopTimer(); // In debug mode there is no timeout!
         }
         actionOnShowDebug();
     }    

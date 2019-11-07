@@ -6,7 +6,10 @@
 package com.romana.devices;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.romana.userinterface.UserInterface;
 import com.romana.utilities.CommonUtils;
+import com.romana.utilities.CommonUtils.TimeInterval;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -18,7 +21,9 @@ import java.util.regex.Pattern;
  */
 public class ScaleDevice extends SerialDevice {
 
-    private static final Logger LOGGER = Logger.getLogger(ScaleDevice.class.getName());
+    
+    // TO do: fix logging!!
+    private static final Logger LOGGER = Logger.getLogger(UserInterface.class.getName());
 
     public ScaleDevice() {
 
@@ -34,16 +39,38 @@ public class ScaleDevice extends SerialDevice {
     }
 
     public int getWeight() throws SerialException {
+        LOGGER.log(Level.INFO, "Started to get Weight");
+        TimeInterval interval = new CommonUtils.TimeInterval();
+        
+        flushWeights();
+        ArrayList<Integer> weightList = new ArrayList<>();
         SerialException last = null;
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 300; i++) {
             try {
-                return getWeightSingle();
+                int weight = getWeightSingle();
+                weightList.add(weight);
+                
             } catch (SerialException ex){
-                CommonUtils.sleep(1000);
+                LOGGER.log(Level.WARNING, "Could not get weight");
                 last = ex;
             }
+            
+            if (weightList.size() >= 25){
+                break;
+            }
+            CommonUtils.sleep(30);
         }
-        throw new SerialException("Impossible to get weight", last);
+        
+        if (weightList.isEmpty()){
+            throw new SerialException("Impossible to get weight", last);
+        }
+        int[] weightArray = weightList.stream().mapToInt(i -> i).toArray();
+        int finalWeight = CommonUtils.findPopular(weightArray);
+        LOGGER.log(Level.INFO, String.format("Final Weight Chosen: %s, took %s seconds", 
+                finalWeight, interval.getSeconds()));
+       
+        return finalWeight;
+        
     }
     
     private int getWeightSingle() throws SerialException {
@@ -53,9 +80,20 @@ public class ScaleDevice extends SerialDevice {
         String readable = readableStringFromBytes(bytesRead);
         WeightResponse response = parseWeightFromString(readable);
 
-        LOGGER.log(Level.INFO, String.format("Read %s kg with code %s",
+        LOGGER.log(Level.FINE, String.format("Read %s kg with code %s",
                 response.weight, response.code));
         return response.weight;
+    }
+    
+    private void flushWeights() throws SerialException{
+        int iterations = 50;
+        LOGGER.log(Level.FINE, "Started Flushing Weights. {0} iterations.", iterations);
+        TimeInterval interval = new CommonUtils.TimeInterval();
+ 
+        for (int i = 0; i < iterations; i++) {
+            readBytes(35, 500);
+        }
+        LOGGER.log(Level.FINE, "Flush finished: {} seconds", interval.getSeconds());
     }
 
     private String readableStringFromBytes(byte[] byteArray) {
@@ -87,12 +125,9 @@ public class ScaleDevice extends SerialDevice {
         Pattern weightPattern = Pattern.compile("[\\s]{2}[0-9]+\\s");
         Matcher weightMatcher = weightPattern.matcher(reading);
 
-        System.out.println("READING " + reading);
-
         if (weightMatcher.find()) {
             String matched = weightMatcher.group(0).replaceAll("\\s", "");
             weight = Integer.valueOf(matched);
-            //System.out.println("Weight " + weight);
         } else {
             throw new SerialException("Parsing error " + reading);
         }
@@ -118,11 +153,11 @@ public class ScaleDevice extends SerialDevice {
             this.weight = weight;
             this.code = code;
         }
-
     }
 
     @Override
     public boolean isWorking() {
+        // To do: Detect working scale!
         return true;
     }
 
@@ -131,12 +166,12 @@ public class ScaleDevice extends SerialDevice {
 
         while (true) {
             try {
-                System.out.println(CommonUtils.formattedHourNow() + " " + scale.getWeight());
+                System.out.println("###############################" + CommonUtils.formattedHourNow() + " " + scale.getWeight());
             } catch (SerialException ex) {
                 System.out.println("Error " + ex.getMessage());
             }
             System.out.println("------------------------------------------------");
-            CommonUtils.sleep(1000);
+            CommonUtils.sleep(100);
         }
     }
 }

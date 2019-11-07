@@ -7,7 +7,6 @@ package com.romana.userinterface.commonwidgets;
 
 import com.romana.userinterface.Style;
 import java.awt.AWTException;
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -152,7 +151,6 @@ public class EntryPanel extends InteractivePanel {
     }
 
     public void getEntryFocus() {
-        System.out.println("Pidiendo focus desde EDT? ->" + SwingUtilities.isEventDispatchThread());
         entryPanel.requestEntryFocus();
     }
 
