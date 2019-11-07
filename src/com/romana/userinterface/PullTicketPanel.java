@@ -8,11 +8,13 @@ package com.romana.userinterface;
 import com.romana.devices.SerialException;
 import com.romana.devices.SystemOperations;
 import com.romana.devices.WeightInfo;
+import com.romana.devices.WeightInfo.DatedWeight;
 import com.romana.userinterface.commonwidgets.Buttons;
 import com.romana.userinterface.commonwidgets.MessageAndButtonPanel;
 import com.romana.utilities.CommonUtils;
 import com.romana.utilities.Configuration;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
@@ -28,7 +30,7 @@ public class PullTicketPanel extends MessageAndButtonPanel {
     private static final String TITLE = "Retire su ticket";
     private static final String MESSAGE = "Para sacarlo, tírelo hacia usted. No lo tire hacia arriba";
     private static final String PIC_PATH = "/gui_img/ticket_512.png";
-    private static final int INACTIVITY_TIMEOUT = 30;
+    private static final int INACTIVITY_TIMEOUT = 15;
     private final Style.StyledImage picLabel = new Style.StyledImage(PIC_PATH, 350, 350);
     private Style.RoundedButton okButton;
 
@@ -69,6 +71,11 @@ public class PullTicketPanel extends MessageAndButtonPanel {
     }
     
     @Override
+    public void timeoutAction(){
+        firstButtonAction();
+    }
+    
+    @Override
     public void firstButtonAction() {
         systemActions.returnToMainMenu();
     }
@@ -81,7 +88,7 @@ public class PullTicketPanel extends MessageAndButtonPanel {
 
         @Override
         protected Boolean doInBackground() throws SerialException {
-            LOGGER.log(Level.FINE, "Started PrintTicket worker");
+           LOGGER.log(Level.FINE, "Started PrintTicket worker");
 
             SystemOperations systemOps = systemActions.getSystemOperations();
             WeightInfo actualWeight = systemActions.getActualWeightInfo();
@@ -97,17 +104,31 @@ public class PullTicketPanel extends MessageAndButtonPanel {
                     
                 case TWO_PHASE:
                     int firstWeight = actualWeight.getFirstWeight();
-                    int lastWeight = actualWeight.getSecondWeight();
                     Date firstDate = actualWeight.getFirstWeightDate();
-                    Date lastDate = actualWeight.getSecondWeightDate();
                     String firstDateFormatted = CommonUtils.formatDate(firstDate);
+                    
+                    if (actualWeight.readyForSecondPhase()){
+                        return systemOps.printTwoPhaseFirstTicket(plate, url, totalPrice, firstWeight, 
+                            firstDateFormatted);
+                    }
+                    
+                    int lastWeight = actualWeight.getSecondWeight();
+                    Date lastDate = actualWeight.getSecondWeightDate();
                     String lastDateFormatted = CommonUtils.formatDate(lastDate);
              
-                    return systemOps.printTwoPhaseTicket(plate, url, totalPrice, firstWeight, 
+                    return systemOps.printTwoPhaseFinalTicket(plate, url, totalPrice, firstWeight, 
                             lastWeight, firstDateFormatted, lastDateFormatted);
                     
                 case AXIS:
-                    return true; // TO DO!
+                    ArrayList<DatedWeight> datedWeights = actualWeight.getWeights();
+                    int[] weightArray = new int[datedWeights.size()];
+                    
+                    for (int i = 0; i < datedWeights.size(); i++) {
+                        DatedWeight datedWeight = datedWeights.get(i);
+                        weightArray[i] = datedWeight.weight;
+                    }
+                    
+                    return systemOps.printAxisTicket(plate, url, totalPrice, weightArray);
             }
             return false;
         }
@@ -125,9 +146,6 @@ public class PullTicketPanel extends MessageAndButtonPanel {
             LOGGER.log(Level.INFO, "Ticket printed Succesfully");
             setContinueEnabled(true);
         }
-
     }
-    
-    
     
 }

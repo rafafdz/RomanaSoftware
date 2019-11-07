@@ -69,11 +69,10 @@ public class ErrorMessagePanel extends MessageAndButtonPanel {
     }
 
     public static enum ErrorType {
-
         SERIAL_COM_ERROR,
         INTERRUPED_ERROR, 
         DATABASE_ERROR,
-        UNKNOWN_ERROR,
+        UNKNOWN_ERROR
     }
     
     public static void main(String[] args) {

@@ -43,6 +43,6 @@ public class FirstPhaseFinishedPanel extends MessageAndButtonPanel{
     
     @Override
     public void firstButtonAction(){
-        systemActions.returnToMainMenu();
+        interfaceActions.switchPanel(PullTicketPanel.class);
     }
 }

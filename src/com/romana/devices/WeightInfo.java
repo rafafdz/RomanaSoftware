@@ -127,6 +127,12 @@ public class WeightInfo {
         boolean secondCondition = (!finished && weights.size() == 1 || finished);
         return type == WeightType.TWO_PHASE && secondCondition;
     }
+    
+    public boolean readyForSecondPhase() {
+        // TO DO: Is this necessary?
+        boolean secondCondition = (!finished && weights.size() == 1);
+        return type == WeightType.TWO_PHASE && secondCondition;
+    }
 
     public void addWeight(int weight) {
         weights.add(new DatedWeight(weight, new Date()));
@@ -137,6 +143,22 @@ public class WeightInfo {
 
     public int getNumberOfWeights() {
         return weights.size();
+    }
+    
+    
+    public int getWeightSum(){
+        int sum = 0;
+        for (DatedWeight weight : weights) {
+            sum += weight.weight;
+        }
+        return sum;
+    }
+    
+    public int getPriceToPay(){
+        if (type == TWO_PHASE && getNumberOfWeights() == 1){
+            return 0;
+        }
+        return getTotalPrice();
     }
 
     public void finishProcess() {

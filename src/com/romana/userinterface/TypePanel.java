@@ -157,7 +157,7 @@ public class TypePanel extends InteractivePanel {
 
             // Generates a new weigh Process!
             WeightInfo newProcess = new WeightInfo(weightType);
-            LOGGER.log(Level.FINE, "Generated new Weight Process of type {0}", newProcess.getType());
+           LOGGER.log(Level.FINE, "Generated new Weight Process of type {0}", newProcess.getType());
 
             systemActions.setActualWeightInfo(newProcess);
 

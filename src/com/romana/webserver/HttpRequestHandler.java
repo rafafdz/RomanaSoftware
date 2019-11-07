@@ -48,7 +48,7 @@ public class HttpRequestHandler implements HttpHandler {
     private byte[] createResponseFromURI(URI uri) {
         String subpath = uri.getPath(); // This Ignores if there is a Query!
         Path requestedPath = Paths.get(subpath);
-        LOGGER.log(Level.FINE, "Requested resource at {0}", subpath);
+       LOGGER.log(Level.FINE, "Requested resource at {0}", subpath);
 
         Path resourcePath;
         // Redirect URL to local files Section
@@ -71,7 +71,7 @@ public class HttpRequestHandler implements HttpHandler {
             return RESOURCE_NOT_FOUND;
         }
 
-        LOGGER.log(Level.FINE, "Modified path to {0}", resourcePath);
+       LOGGER.log(Level.FINE, "Modified path to {0}", resourcePath);
 
         boolean isWebpageFile = resourcePath.startsWith(WEBPAGE_PATH);
         if (isWebpageFile) {

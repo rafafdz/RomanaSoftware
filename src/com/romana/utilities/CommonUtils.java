@@ -22,6 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -240,16 +241,66 @@ public class CommonUtils {
         return GSON.fromJson(fileContent, classOfT);
     }
 
-    public static void main(String[] args) throws IOException, ParseException {
-        //System.out.println(CommonUtils.randomDouble(200, 500));
-        //System.out.println(resourceURL("/webpage").getParent());
-        //CommonUtils.serializeToFile(new WeightInfo(SystemOperations.WeightType.AXIS, "kek", "lol"), "manonals.json");
-        Date date1 = CommonUtils.HOUR_FORMATTER.parse("20:23");
-        Date date2 = CommonUtils.HOUR_FORMATTER.parse("20:28");
+    public static int findPopular(int[] intArray) {
 
-        System.out.println(hourDifferenceDecimal(date1, date2));
-//        System.out.println(CommonUtils.dateFromWebUrl("JT2I3OTZ"));
-        System.out.println((double) 124 / 14);
+        if (intArray == null || intArray.length == 0) {
+            return 0;
+        }
+
+        Arrays.sort(intArray);
+
+        int previous = intArray[0];
+        int popular = intArray[0];
+        int count = 1;
+        int maxCount = 1;
+
+        for (int i = 1; i < intArray.length; i++) {
+            if (intArray[i] == previous) {
+                count++;
+            } else {
+                if (count > maxCount) {
+                    popular = intArray[i - 1];
+                    maxCount = count;
+                }
+                previous = intArray[i];
+                count = 1;
+            }
+        }
+        return count > maxCount ? intArray[intArray.length - 1] : popular;
+    }
+    
+    public static class TimeInterval {
+        
+        private long startTime = 0;
+        private long finalTime = 0;
+        
+        public TimeInterval(){
+            startTime = System.currentTimeMillis();
+        }
+        
+        public void stop(){
+            if (finalTime == 0){
+                finalTime = System.currentTimeMillis();
+            }
+        }
+        
+        public double getSeconds(){
+            stop();
+            return roundTwoDecimals((double) (finalTime - startTime) / 1000);
+        }
+        
+        @Override
+        public String toString(){
+            stop();
+            return String.valueOf(finalTime - startTime);
+        }
+                
     }
 
+    public static void main(String[] args) throws IOException, ParseException {
+        TimeInterval interval = new CommonUtils.TimeInterval();
+        sleep(1440);
+        System.out.println(interval.getSeconds());
+        System.out.println(interval);
+    }
 }

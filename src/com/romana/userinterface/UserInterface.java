@@ -34,7 +34,7 @@ public final class UserInterface extends JFrame {
     private static final String LOG_FILE = "log/userinterface.log";
     private static final Logger USER_LOGGER = LoggerCreator.create(UserInterface.ROOT_LOGGER_NAME,
             UserInterface.LOG_FILE,
-            Level.INFO);
+            Level.FINE);
 
     private WeightInfo actualWeightInfo;
     private InteractivePanel actualPanel;
@@ -163,8 +163,6 @@ public final class UserInterface extends JFrame {
         }
 
     }
-
-    
     
     /**
      * Restarts timer for every click on screen
@@ -193,7 +191,7 @@ public final class UserInterface extends JFrame {
             newPanel.showAction();
         }
         cards.show(cardPanel, classOfT.getName());
-        LOGGER.log(Level.FINE, "Panel Switched to {0}", classOfT.getName());
+       LOGGER.log(Level.FINE, "Panel Switched to {0}", classOfT.getName());
     }
 
     public void setErrorMessage(ErrorType error) {
@@ -310,7 +308,7 @@ public final class UserInterface extends JFrame {
         public CardDatabase getCardDatabase();
 
     }
-
+    
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
         ui.setVisible(true);
