@@ -235,9 +235,11 @@ public abstract class SerialDevice extends ExternalDevice {
         byte[] buffer = new byte[toClear];
         userPort.readBytes(buffer, toClear);
         
+        
+        // To do: Fix output
         // WARNING: Messy output!
         LOGGER.log(Level.FINE, String.format("Cleared Serial buffer, %s bytes -> %s",
-                toClear, new String(buffer)));
+                toClear, CommonUtils.removeNonPrintable(new String(buffer))));
     }
 
     public byte[] readBytes(int length, int timeout) {
@@ -277,6 +279,8 @@ public abstract class SerialDevice extends ExternalDevice {
             CommonUtils.sleep(20);
             elapsed += 20;
         }
+        LOGGER.log(Level.FINEST, String.format("Read %s bytes from serial: %s", 
+                byteCount, CommonUtils.bytesToHex(readBuffer)));
         return readBuffer;
 
     }

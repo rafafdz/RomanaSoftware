@@ -25,6 +25,7 @@ public class ScaleDevice extends SerialDevice {
     // TO do: fix logging!!
     private static final Logger LOGGER = Logger.getLogger(UserInterface.class.getName());
 
+    
     public ScaleDevice() {
 
     }
@@ -95,13 +96,18 @@ public class ScaleDevice extends SerialDevice {
         for (int i = 0; i < iterations; i++) {
             byte[] data = readBytes(35, 500);
             // WARNING: Messy output due to non printable ascii
-            LOGGER.log(Level.FINE, "Read while flushing: {0}", new String(data));
+            LOGGER.log(Level.FINE, "Read while flushing: {0}",  
+                    CommonUtils.removeNonPrintable(new String(data)));
         }
         LOGGER.log(Level.FINE, "Flush finished: {0} seconds", interval.getSeconds());
     }
 
     private String readableStringFromBytes(byte[] byteArray) {
         int[] ints = CommonUtils.byteArrayToIntArray(byteArray);
+        
+        // To do: use & 0xFF to remove twos compliment.
+        // https://stackoverflow.com/questions/11380062/what-does-value-0xff-do-in-java
+        // As seen in String to hex
 
         StringBuilder str = new StringBuilder();
 

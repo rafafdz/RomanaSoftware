@@ -46,6 +46,7 @@ public class CommonUtils {
     private static final SimpleDateFormat HOUR_FORMATTER = new SimpleDateFormat(HOUR_PATTERN);
     private static final SimpleDateFormat FOLDER_FORMATTER = new SimpleDateFormat(FOLDER_DATE);
 
+    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static String formatDate(Date date) {
@@ -226,6 +227,10 @@ public class CommonUtils {
         return new Object().getClass().getResourceAsStream(name);
     }
 
+    public static String removeNonPrintable(String str) {
+        return str.replaceAll("\\p{C}", "?");
+    }
+
     public static boolean resourceExists(String name) {
         try {
             getResourceBytes(name);
@@ -268,39 +273,52 @@ public class CommonUtils {
         }
         return count > maxCount ? intArray[intArray.length - 1] : popular;
     }
-    
+
+    public static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 3];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 3] = HEX_ARRAY[v >>> 4];
+            hexChars[j * 3 + 1] = HEX_ARRAY[v & 0x0F];
+            hexChars[j * 3 + 2] = ' ';
+        }
+        return new String(hexChars);
+    }
+
     public static class TimeInterval {
-        
+
         private long startTime = 0;
         private long finalTime = 0;
-        
-        public TimeInterval(){
+
+        public TimeInterval() {
             startTime = System.currentTimeMillis();
         }
-        
-        public void stop(){
-            if (finalTime == 0){
+
+        public void stop() {
+            if (finalTime == 0) {
                 finalTime = System.currentTimeMillis();
             }
         }
-        
-        public double getSeconds(){
+
+        public double getSeconds() {
             stop();
             return roundTwoDecimals((double) (finalTime - startTime) / 1000);
         }
-        
+
         @Override
-        public String toString(){
+        public String toString() {
             stop();
             return String.valueOf(finalTime - startTime);
         }
-                
+
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        TimeInterval interval = new CommonUtils.TimeInterval();
-        sleep(1440);
-        System.out.println(interval.getSeconds());
-        System.out.println(interval);
+//        TimeInterval interval = new CommonUtils.TimeInterval();
+//        sleep(1440);
+//        System.out.println(interval.getSeconds());
+//        System.out.println(interval);
+        byte[] bytes = {(byte)0x90, 121, 101, 45, 62};
+        System.out.println(bytesToHex(bytes));
     }
 }
