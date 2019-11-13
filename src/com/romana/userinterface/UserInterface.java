@@ -34,7 +34,7 @@ public final class UserInterface extends JFrame {
     private static final String LOG_FILE = "log/userinterface.log";
     private static final Logger USER_LOGGER = LoggerCreator.create(UserInterface.ROOT_LOGGER_NAME,
             UserInterface.LOG_FILE,
-            Level.FINE);
+            Level.FINEST);
 
     private WeightInfo actualWeightInfo;
     private InteractivePanel actualPanel;
