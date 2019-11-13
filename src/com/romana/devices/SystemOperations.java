@@ -183,6 +183,7 @@ public class SystemOperations {
     }
 
     public void discardTwoPhase(WeightInfo twoPhase) {
+        // To do: DO NOT Discard, save incomplete!
         String plate = twoPhase.getPlate();
         Path dirPath = Paths.get(PROCESS_PATH, plate);
         Path filePath = dirPath.resolve(WEIGHT_FILENAME);
