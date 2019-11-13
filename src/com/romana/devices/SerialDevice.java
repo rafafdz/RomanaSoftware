@@ -11,6 +11,7 @@ https://github.com/SF2311/ArduinoUI/tree/master/src/sample
 package com.romana.devices;
 
 import com.fazecast.jSerialComm.*;
+import com.romana.userinterface.UserInterface;
 import com.romana.utilities.CommonUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ import java.util.logging.Logger;
  */
 public abstract class SerialDevice extends ExternalDevice {
 
-    private static final Logger LOGGER = Logger.getGlobal();
+    // TO do: fix logging!!
+    private static final Logger LOGGER = Logger.getLogger(UserInterface.class.getName());
     public SerialPort userPort;
     private String comPort;
     private int baudRate;
@@ -230,7 +232,12 @@ public abstract class SerialDevice extends ExternalDevice {
     
     public void clearBuffer(){
         int toClear = userPort.bytesAvailable();
-        userPort.readBytes(new byte[toClear], toClear);
+        byte[] buffer = new byte[toClear];
+        userPort.readBytes(buffer, toClear);
+        
+        // WARNING: Messy output!
+        LOGGER.log(Level.FINE, String.format("Cleared Serial buffer, %s bytes -> %s",
+                toClear, new String(buffer)));
     }
 
     public byte[] readBytes(int length, int timeout) {
@@ -272,7 +279,6 @@ public abstract class SerialDevice extends ExternalDevice {
         }
         return readBuffer;
 
-        // return response;
     }
 
     public static void main(String[] args) throws SerialException {
@@ -283,8 +289,8 @@ public abstract class SerialDevice extends ExternalDevice {
             }
         };
         CommonUtils.sleep(2000);
-        //cards.sendData("L");
-        //CommonUtils.sleep(100);
+        // cards.sendData("L");
+        // CommonUtils.sleep(100);
         while (true) {
             System.out.println(cards.communicate("L", 500));
             System.err.println("Tarjeta: " + cards.readData(20000));

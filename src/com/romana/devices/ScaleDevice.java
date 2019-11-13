@@ -45,20 +45,22 @@ public class ScaleDevice extends SerialDevice {
         flushWeights();
         ArrayList<Integer> weightList = new ArrayList<>();
         SerialException last = null;
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 120; i++) {
             try {
                 int weight = getWeightSingle();
-                weightList.add(weight);
+                if (weight != 0){
+                    weightList.add(weight);
+                }
                 
             } catch (SerialException ex){
-                LOGGER.log(Level.WARNING, "Could not get weight");
+                LOGGER.log(Level.WARNING, "Could not get weight: {0}", ex.getMessage());
                 last = ex;
             }
             
-            if (weightList.size() >= 25){
+            if (weightList.size() >= 15){
                 break;
             }
-            CommonUtils.sleep(30);
+//            CommonUtils.sleep(30);
         }
         
         if (weightList.isEmpty()){
@@ -75,7 +77,7 @@ public class ScaleDevice extends SerialDevice {
     
     private int getWeightSingle() throws SerialException {
         clearBuffer();
-        byte[] bytesRead = readBytes(35, 500); // 35 -> Minimum 
+        byte[] bytesRead = readBytes(35, 500); // 35 -> Minimum to get a full reading
 
         String readable = readableStringFromBytes(bytesRead);
         WeightResponse response = parseWeightFromString(readable);
@@ -86,14 +88,16 @@ public class ScaleDevice extends SerialDevice {
     }
     
     private void flushWeights() throws SerialException{
-        int iterations = 50;
+        int iterations = 20;
         LOGGER.log(Level.FINE, "Started Flushing Weights. {0} iterations.", iterations);
         TimeInterval interval = new CommonUtils.TimeInterval();
  
         for (int i = 0; i < iterations; i++) {
-            readBytes(35, 500);
+            byte[] data = readBytes(35, 500);
+            // WARNING: Messy output due to non printable ascii
+            LOGGER.log(Level.FINE, "Read while flushing: {0}", new String(data));
         }
-        LOGGER.log(Level.FINE, "Flush finished: {} seconds", interval.getSeconds());
+        LOGGER.log(Level.FINE, "Flush finished: {0} seconds", interval.getSeconds());
     }
 
     private String readableStringFromBytes(byte[] byteArray) {
@@ -141,6 +145,8 @@ public class ScaleDevice extends SerialDevice {
             throw new SerialException("Parsing error " + reading);
         }
 
+     
+        LOGGER.log(Level.FINE, String.format("Parsed %s - %s  from %s", weight, code, reading));
         return new WeightResponse(weight, code);
     }
 
@@ -162,16 +168,23 @@ public class ScaleDevice extends SerialDevice {
     }
 
     public static void main(String[] args) throws SerialException {
-        ScaleDevice scale = new ScaleDevice("/dev/ttyUSB0");
+        ScaleDevice scale = new ScaleDevice("/dev/sensor_romana");
 
         while (true) {
             try {
-                System.out.println("###############################" + CommonUtils.formattedHourNow() + " " + scale.getWeight());
+                byte[] read = scale.readBytes(35, 500);
+                String readable = new String(read);
+                String parsed = scale.readableStringFromBytes(read);
+                System.out.println("####################### " + CommonUtils.formattedHourNow() + " ####################");
+//                System.out.println(String.format("Original: %s  | Parsed: %s", readable, parsed));
+                System.out.println(String.format("Parsed: %s", parsed));
+                int weight = scale.parseWeightFromString(parsed).weight;
+                System.out.println(String.format("Got weight: %s", weight));
+                
             } catch (SerialException ex) {
-                System.out.println("Error " + ex.getMessage());
+                System.out.println(String.format("Got weight: Error(%s)", ex.getMessage()));
             }
             System.out.println("------------------------------------------------");
-            CommonUtils.sleep(100);
         }
     }
 }

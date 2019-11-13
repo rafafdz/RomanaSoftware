@@ -49,10 +49,12 @@ public final class UserInterface extends JFrame {
     private CardDatabase cardDatabase;
 
     public UserInterface() {
+        LOGGER.log(Level.INFO, "Starting RomanaSoftware");
 
         try {
             systemOperations = new SystemOperations();
             systemOperations.initializeAllDevices();
+            LOGGER.log(Level.INFO, "Succesfully started all devices");
         } catch (SerialException ex) {
             LOGGER.log(Level.SEVERE, "Could not initialize all devices", ex);
             System.exit(1);
@@ -61,6 +63,7 @@ public final class UserInterface extends JFrame {
         try {
             cardDatabase = new CardDatabase();
         } catch (DatabaseException ex) {
+            // TO DO: Show in interface that devices could not be initialized
             LOGGER.log(Level.SEVERE, "Database initialization error", ex);
             System.exit(1);
         }
