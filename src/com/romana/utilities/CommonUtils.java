@@ -22,6 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
@@ -273,6 +274,12 @@ public class CommonUtils {
         }
         return count > maxCount ? intArray[intArray.length - 1] : popular;
     }
+    
+    
+    public static int findPopularArrayList(ArrayList<Integer> arrayList){
+        int[] intArray = arrayList.stream().mapToInt(i -> i).toArray();
+        return findPopular(intArray);
+    }
 
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 3];
@@ -284,6 +291,7 @@ public class CommonUtils {
         }
         return new String(hexChars);
     }
+    
 
     public static class TimeInterval {
 
@@ -320,5 +328,10 @@ public class CommonUtils {
 //        System.out.println(interval);
         byte[] bytes = {(byte)0x90, 121, 101, 45, 62};
         System.out.println(bytesToHex(bytes));
+        ArrayList<Integer> kek = new ArrayList<>();
+        kek.add(23);
+        System.out.println(kek.size());
+        kek.clear();
+        System.out.println(kek.size());
     }
 }
