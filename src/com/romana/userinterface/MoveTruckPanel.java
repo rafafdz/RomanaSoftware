@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class MoveTruckPanel extends MessageTwoButton {
 
-    private static final int INACTIVITY_TIMEOUT = 80;
+    private static final int INACTIVITY_TIMEOUT = 240;
     private static final String PIC_PATH = "/gui_img/cargo_truck_512.png";
     private final Style.StyledImage image = new Style.StyledImage(PIC_PATH, 400, 400);
     private final static String TITLE = "Mueva su camión";
