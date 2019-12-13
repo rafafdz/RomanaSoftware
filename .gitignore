@@ -26,5 +26,5 @@ weights/
 store/
 config/
 db/
-res/ticket_python/venv
-external/
+venv/
+.vscode/
