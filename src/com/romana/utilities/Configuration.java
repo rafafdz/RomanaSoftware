@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  */
 public class Configuration {
 
-    public static final String SOFTWARE_VERSION = "0.9.6";
+    public static final String SOFTWARE_VERSION = "0.9.7";
     
     private static final Logger LOGGER = Logger.getLogger(Configuration.class.getName());
     private static final String CONFIG_PATH = "config/romana_software.properties";
