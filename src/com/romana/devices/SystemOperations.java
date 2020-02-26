@@ -61,6 +61,11 @@ public class SystemOperations {
     public void setTicketDevice(TicketDevice ticketDevice) {
         this.ticketDevice = ticketDevice;
     }
+    
+    
+    public ScaleDevice getScaleDevice(){
+        return scaleDevice;
+    }
 
     public void initializeAllDevices() throws SerialException {
 
@@ -95,26 +100,41 @@ public class SystemOperations {
                     return true;
                 }
             };
+        } else if (SCALE_PORT.equals("MANUAL")) {
+            this.scaleDevice = new ScaleDevice() {
+                @Override
+                public int getWeight() {
+                    
+                    int weight = getCurrentWeight();
+                    setManualWeight(0);
+                    return weight;
+                }
+
+                @Override
+                public boolean isWorking() {
+                    return true;
+                }
+            };
         } else {
             this.scaleDevice = new ScaleDevice(SCALE_PORT);
         }
 
         if (TICKET_VENDOR_ID.equals("TEST")) {
             this.ticketDevice = new TicketDevice() {
-                
+
                 @Override
-                public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
+                public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight) {
                     return true;
                 }
-                
+
                 @Override
                 public boolean printTwoPhaseFinalTicket(String plate, String url, int totalPrice, int firstWeight,
-                    int lastWeight, String firstDate, String lastDate){
+                        int lastWeight, String firstDate, String lastDate) {
                     return true;
                 }
-                
+
                 @Override
-                public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights){
+                public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights) {
                     return true;
                 }
 
@@ -124,7 +144,7 @@ public class SystemOperations {
                 }
             };
         } else {
-            this.ticketDevice = new TicketDevice(TICKET_VENDOR_ID, TICKET_PRODUCT_ID, 
+            this.ticketDevice = new TicketDevice(TICKET_VENDOR_ID, TICKET_PRODUCT_ID,
                     TICKET_IN_EP, TICKET_OUT_EP);
         }
 
@@ -245,7 +265,7 @@ public class SystemOperations {
         }
 
         int weightSum = weightAxis.getWeightSum();
-       
+
         int difference = Math.abs(weight - weightSum);
         if (difference < DIFFERENCE_THRESHOLD) {
             return new ScaleResponse(NOT_ENOUGH_DIFFERENCE);
@@ -353,22 +373,22 @@ public class SystemOperations {
         return cardDevice.getCardID();
     }
 
-    public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight){
+    public boolean printSimpleTicket(String plate, String url, int totalPrice, int weight) {
         return ticketDevice.printSimpleTicket(plate, url, totalPrice, weight);
     }
-    
+
     public boolean printTwoPhaseFirstTicket(String plate, String url, int totalPrice, int firstWeight,
-            String firstDate){
+            String firstDate) {
         return ticketDevice.printTwoPhaseFirstTicket(plate, url, totalPrice, firstWeight, firstDate);
     }
-    
+
     public boolean printTwoPhaseFinalTicket(String plate, String url, int totalPrice, int firstWeight,
-            int lastWeight, String firstDate, String lastDate){
-        return ticketDevice.printTwoPhaseFinalTicket(plate, url, totalPrice, 
+            int lastWeight, String firstDate, String lastDate) {
+        return ticketDevice.printTwoPhaseFinalTicket(plate, url, totalPrice,
                 firstWeight, lastWeight, firstDate, lastDate);
     }
-    
-    public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights){
+
+    public boolean printAxisTicket(String plate, String url, int totalPrice, int... weights) {
         return ticketDevice.printAxisTicket(plate, url, totalPrice, weights);
     }
 

@@ -29,6 +29,15 @@ public class WeightInfo {
     public String url; // To do: set to private !
     private transient Integer nextAxis = 0; // Transient so it doesnt get serialized!
     private transient boolean finished = false;
+    private transient int preWeight;
+
+    public int getPreWeight() {
+        return preWeight;
+    }
+
+    public void setPreWeight(int preWeight) {
+        this.preWeight = preWeight;
+    }
 
     public WeightInfo(WeightType type) {
         this.type = type;
@@ -74,7 +83,7 @@ public class WeightInfo {
     public ArrayList<DatedWeight> getWeights() {
         return weights;
     }
-
+    
     public int getTotalPrice() {
         return totalPrice;
     }

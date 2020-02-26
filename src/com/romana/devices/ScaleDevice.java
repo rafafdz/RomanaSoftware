@@ -24,6 +24,7 @@ public class ScaleDevice extends SerialDevice {
     // TO do: fix logging!!
     private static final Logger LOGGER = Logger.getLogger(UserInterface.class.getName());
     private int lastWeight;
+    private int currentWeight = 0;
 
     private static int RESET_THRESHOLD = 50;
 
@@ -87,6 +88,14 @@ public class ScaleDevice extends SerialDevice {
         this.lastWeight = chosenWeight;
         return chosenWeight;
 
+    }
+    
+    public void setManualWeight(int weight){
+        currentWeight = weight;
+    }
+    
+    public int getCurrentWeight(){
+        return currentWeight;
     }
     
     private byte[] readWeightBytes(){

@@ -2,6 +2,7 @@ package com.romana.userinterface;
 
 import com.romana.database.DatabaseException;
 import com.romana.devices.CardDatabase;
+import com.romana.devices.ScaleDevice;
 import com.romana.devices.SerialException;
 import com.romana.devices.SystemOperations;
 import com.romana.devices.WeightInfo;
@@ -98,6 +99,8 @@ public final class UserInterface extends JFrame {
         addCard(new FirstPhaseFinishedPanel());
         addCard(new PullTicketPanel());
         addCard(new TimeExceededPanel());
+        addCard(new ManualWeightInputPanel());
+        addCard(new ConfirmManualWeightPanel());
 
         setInterfacesToPanels();
 
@@ -261,6 +264,12 @@ public final class UserInterface extends JFrame {
         public void setActualWeightInfo(WeightInfo info) {
             actualWeightInfo = info;
         }
+        
+        @Override
+        public void setManualWeight(int weight){
+            ScaleDevice scale = systemOperations.getScaleDevice();
+            scale.setManualWeight(weight);
+        }
 
         @Override
         public void returnToMainMenu() {
@@ -309,6 +318,8 @@ public final class UserInterface extends JFrame {
         public SystemOperations getSystemOperations();
 
         public CardDatabase getCardDatabase();
+        
+        public void setManualWeight(int weight);
 
     }
     

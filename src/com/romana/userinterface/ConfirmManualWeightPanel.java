@@ -7,49 +7,42 @@ package com.romana.userinterface;
 
 import com.romana.devices.WeightInfo;
 import com.romana.userinterface.commonwidgets.MessageTwoButton;
+import java.text.DecimalFormat;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Rafa
  */
-public class MoveTruckPanel extends MessageTwoButton {
+public class ConfirmManualWeightPanel extends MessageTwoButton {
 
-    private static final int INACTIVITY_TIMEOUT = 240;
+    private static final int INACTIVITY_TIMEOUT = 60;
     private static final String PIC_PATH = "/gui_img/cargo_truck_512.png";
     private final Style.StyledImage image = new Style.StyledImage(PIC_PATH, 400, 400);
-    private final static String TITLE = "Mueva su camión";
-    private static final String MESSAGE = "Mueva su camión a la %s y cuando esté "
-            + "listo presione 'Pesar'";
+    private final static String TITLE = "Confirmar Pesaje Manual";
+    private static final String MESSAGE = "¿Esta seguro de ingresar el pesaje de \n %s?";
+    public final DecimalFormat decimalFormat;
 
-    private static final String[] AXIS = {"PRIMER", "SEGUNDO", "TERCER", "CUARTO", "QUINTO",
-        "SEXTO", "SÉPTIMO", "OCTAVO", "NOVENO"};
-
-    public MoveTruckPanel() {
+    public ConfirmManualWeightPanel() {
         super(INACTIVITY_TIMEOUT);
         setup();
+        decimalFormat = new DecimalFormat("#.##");
+        decimalFormat.setGroupingUsed(true);
+        decimalFormat.setGroupingSize(3);
     }
 
     private void setup() {
         setTitle(TITLE);
-        setImage(image);
-        setButtonText("Pesar");
+        setButtonText("OK");
         finishSetup();
     }
 
     @Override
     public void actionOnShow() {
         WeightInfo info = systemActions.getActualWeightInfo();
-        switch (info.getType()) {
-            case AXIS:
-                int nextAxis = info.getNextAxis();
-                setAxisText(nextAxis);
-                break;
-
-            default:
-                setFullWeightText();
-                break;
-        }
+        int preWeight = info.getPreWeight();
+        String preWeightString = decimalFormat.format(preWeight).replace(',', '.');
+        setText(String.format(MESSAGE, preWeightString));
     }
 
     @Override
@@ -64,23 +57,18 @@ public class MoveTruckPanel extends MessageTwoButton {
 
     @Override
     public void buttonAction() {
-        interfaceActions.switchPanel(ManualWeightInputPanel.class);
-    }
-
-    private void setFullWeightText() {
-        setText(String.format(MESSAGE, "romana"));
-    }
-
-    public void setAxisText(int axisNumberMinusOne) {
-        String text = "posición del " + AXIS[axisNumberMinusOne] + " EJE";
-        setText(String.format(MESSAGE, text));
-
+        int weight = systemActions.getActualWeightInfo().getPreWeight();
+        // Setear el peso en scale device
+        systemActions.setManualWeight(weight);
+        interfaceActions.switchPanel(WeighingPanel.class);
     }
 
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame();
-        MoveTruckPanel entry = new MoveTruckPanel();
-        entry.setAxisText(7);
+        ConfirmManualWeightPanel entry = new ConfirmManualWeightPanel();
+//        System.out.println(entry.decimalFormat.format(1234567));
+//        entry.setWeightToShow(7);
+        entry.actionOnShow();
         mainFrame.add(entry);
         mainFrame.pack();
         mainFrame.setVisible(true);

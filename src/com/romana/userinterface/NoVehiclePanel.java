@@ -19,8 +19,6 @@ public class NoVehiclePanel extends MessageTwoButton{
     private static final int INACTIVITY_TIMEOUT = 120;
     
     
-    
-    
     public NoVehiclePanel(){
         super(INACTIVITY_TIMEOUT);
         setup();
@@ -40,6 +38,6 @@ public class NoVehiclePanel extends MessageTwoButton{
     
     @Override
     public void buttonAction(){
-        interfaceActions.switchPanel(WeighingPanel.class);
+        interfaceActions.switchPanel(MoveTruckPanel.class);
     }
 }
