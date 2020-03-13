@@ -70,7 +70,7 @@ public class SystemOperations {
 
                 @Override
                 public String getCardID() {
-                    return "TESTCARD0";
+                    return "33A30D1E";
                 }
 
                 @Override

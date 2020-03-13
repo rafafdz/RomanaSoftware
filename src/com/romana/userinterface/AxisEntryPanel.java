@@ -3,7 +3,7 @@ package com.romana.userinterface;
 import com.romana.devices.WeightInfo;
 import com.romana.userinterface.commonwidgets.CustomInput;
 import com.romana.userinterface.commonwidgets.EntryPanel;
-import com.romana.userinterface.commonwidgets.Numpad;
+import com.romana.userinterface.commonwidgets.AxisNumpad;
 import java.awt.AWTException;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -24,7 +24,7 @@ public class AxisEntryPanel extends EntryPanel{
     
     private void setup(){
         CustomInput entryPanel = getEntryPanel();
-        Numpad numpad = new Numpad(entryPanel);
+        AxisNumpad numpad = new AxisNumpad(entryPanel);
         setVirtualInput(numpad);
         
         setButtonSpacing(5);
