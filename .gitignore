@@ -28,3 +28,4 @@ config/
 db/
 venv/
 .vscode/
+/target/

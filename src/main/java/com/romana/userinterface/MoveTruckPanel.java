@@ -7,6 +7,7 @@ package com.romana.userinterface;
 
 import com.romana.devices.WeightInfo;
 import com.romana.userinterface.commonwidgets.MessageTwoButton;
+import com.romana.utilities.CommonUtils;
 import javax.swing.JFrame;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JFrame;
 public class MoveTruckPanel extends MessageTwoButton {
 
     private static final int INACTIVITY_TIMEOUT = 240;
-    private static final String PIC_PATH = "/gui_img/cargo_truck_512.png";
+    public static final String PIC_PATH = "/gui_img/cargo_truck_512.png";
     private final Style.StyledImage image = new Style.StyledImage(PIC_PATH, 400, 400);
     private final static String TITLE = "Mueva su camión";
     private static final String MESSAGE = "Mueva su camión a la %s y cuando esté "
@@ -78,6 +79,7 @@ public class MoveTruckPanel extends MessageTwoButton {
     }
 
     public static void main(String[] args) {
+        System.out.println(CommonUtils.resourceURL(MoveTruckPanel.PIC_PATH));
         JFrame mainFrame = new JFrame();
         MoveTruckPanel entry = new MoveTruckPanel();
         entry.setAxisText(7);
