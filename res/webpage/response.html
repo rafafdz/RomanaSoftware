@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- To do: Add lozad, lazy image loading -->
+<head>
+    <meta charset="utf-8">
+    <title>Pesaje Romana</title>
+    <link rel="icon" type="image/png" href="https://image.flaticon.com/icons/png/128/130/130535.png" />
+    <link rel="stylesheet" type="text/css" href="pagestyle.css" />
+    <script type="text/javascript" src="gallery.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            showSlides(1);
+        };
+	
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1><strong>Romana Automática</strong></h1>
+        <p>Informacion Sobre pesaje</p>
+    </header>
+
+    <div id="Tablas">
+
+        <h3>Datos</h3>
+        <div id="Tabla-Info">
+            <table class="center">
+                <tr>
+                    <td>Patente</td>
+                    <td>~patente~</td>
+                </tr>
+                <tr>
+                    <td>Monto Cargado</td>
+                    <td>~monto~</td>
+                </tr>
+                <tr>
+                    <td>Resumen Pesaje</td>
+                    <td>~resumen_pesaje~</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Informacion del Pesaje: ~tipo_pesaje~</h3>
+        <div id="Tabla-Pesaje">
+            <table class="center">
+                <tr>
+                    <td>Comentario</td>
+                    <td>Pesaje (Ton)</td>
+                    <td>Fecha</td>
+                </tr>
+                ~tabla_pesaje~
+            </table>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+    <h3>Imágenes del Pesaje</h3>
+    ~galeria~
+
+    <footer>
+        <p id="Credits">@flolju, @rafafdz, @santilaguna. Copyright 2019</p>
+    </footer>
+</body>
+
+</html>
