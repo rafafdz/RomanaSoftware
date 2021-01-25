@@ -1,0 +1,1 @@
+python-escpos==3.0a6
