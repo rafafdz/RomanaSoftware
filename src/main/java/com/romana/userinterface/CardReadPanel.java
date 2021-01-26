@@ -6,7 +6,7 @@
 package com.romana.userinterface;
 
 import com.romana.database.DatabaseException;
-import com.romana.devices.CardDatabase;
+import com.romana.devices.card.CardDatabase;
 import com.romana.devices.SerialException;
 import com.romana.devices.SystemOperations;
 import com.romana.devices.SystemOperations.WeightType;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.romana.devices;
+package com.romana.devices.ticket;
 
+import com.romana.devices.ExternalDevice;
 import com.romana.utilities.CommonUtils;
 import java.io.BufferedReader;
 import java.io.File;

@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.romana.devices;
+package com.romana.devices.scale;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.romana.devices.SerialDevice;
+import com.romana.devices.SerialException;
 import com.romana.userinterface.UserInterface;
 import com.romana.utilities.CommonUtils;
 import com.romana.utilities.CommonUtils.TimeInterval;
@@ -19,7 +21,7 @@ import java.util.regex.Pattern;
  *
  * @author rafael
  */
-public class ScaleDevice extends SerialDevice {
+public class ScaleDevice extends SerialDevice implements Scale {
 
     // TO do: fix logging!!
     private static final Logger LOGGER = Logger.getLogger(UserInterface.class.getName());
@@ -40,7 +42,8 @@ public class ScaleDevice extends SerialDevice {
         serialPort.setParity(SerialPort.EVEN_PARITY);
     }
 
-    public int getWeight() throws SerialException {
+    @Override
+    public int getWeight() throws ScaleException {
         LOGGER.log(Level.INFO, "Started to get Weight");
         TimeInterval interval = new CommonUtils.TimeInterval();
 
@@ -78,7 +81,7 @@ public class ScaleDevice extends SerialDevice {
         }
 
         if (weightList.isEmpty()) {
-            throw new SerialException("Impossible to get weight", last);
+            throw new ScaleException("Impossible to get weight", last);
         }
 
         LOGGER.log(Level.INFO, String.format("Final Weight Chosen: %s, took %s seconds",

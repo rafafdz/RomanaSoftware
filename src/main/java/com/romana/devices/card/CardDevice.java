@@ -1,8 +1,10 @@
 /*
  * sources in CardDatabase.java and SerialDevice.java
  */
-package com.romana.devices;
+package com.romana.devices.card;
 
+import com.romana.devices.SerialDevice;
+import com.romana.devices.SerialException;
 import com.romana.utilities.CommonUtils;
 import java.util.logging.Level;
 import java.util.logging.Logger;

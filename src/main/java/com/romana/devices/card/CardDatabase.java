@@ -1,8 +1,11 @@
-package com.romana.devices;
+package com.romana.devices.card;
 
 import com.romana.database.Database;
+import com.romana.database.Database;
 import com.romana.database.DatabaseException;
-import static com.romana.devices.CardResponse.CardCode.*;
+import com.romana.database.DatabaseException;
+import com.romana.devices.card.CardResponse;
+import static com.romana.devices.card.CardResponse.CardCode.*;
 
 /**
  * @author santiago

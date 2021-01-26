@@ -69,6 +69,7 @@ public class ErrorMessagePanel extends MessageAndButtonPanel {
     }
 
     public static enum ErrorType {
+        SCALE_ERROR,
         SERIAL_COM_ERROR,
         INTERRUPED_ERROR, 
         DATABASE_ERROR,

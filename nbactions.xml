@@ -21,8 +21,8 @@
                 <packaging>*</packaging>
             </packagings>
             <goals>
-                <goal>compile</goal>
-                <goal>assembly:single</goal>
+                <goal>package</goal>
+                
             </goals>
         </action>
     </actions>

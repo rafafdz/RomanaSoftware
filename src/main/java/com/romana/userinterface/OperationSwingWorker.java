@@ -7,6 +7,7 @@ package com.romana.userinterface;
 
 import com.romana.database.DatabaseException;
 import com.romana.devices.SerialException;
+import com.romana.devices.scale.ScaleException;
 import com.romana.userinterface.ErrorMessagePanel.ErrorType;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
@@ -31,6 +32,7 @@ public abstract class OperationSwingWorker<T, V> extends SwingWorker<T, V>{
         interfaceActions = actions;
         errorMap = new HashMap<>();
         // To do: Use more specific Exceptions!
+        errorMap.put(ScaleException.class, ErrorType.SCALE_ERROR);
         errorMap.put(SerialException.class, ErrorType.SERIAL_COM_ERROR);
         errorMap.put(DatabaseException.class, ErrorType.DATABASE_ERROR);
         errorMap.put(InterruptedException.class, ErrorType.INTERRUPED_ERROR);

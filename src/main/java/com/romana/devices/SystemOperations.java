@@ -5,8 +5,15 @@
  */
 package com.romana.devices;
 
+import com.romana.devices.ticket.TicketDevice;
+import com.romana.devices.scale.ScaleResponse;
+import com.romana.devices.card.CardDevice;
+import com.romana.devices.scale.ScaleDevice;
+import com.romana.devices.scale.Scale;
+import com.romana.devices.scale.RemoteScale;
 import com.romana.database.DatabaseException;
-import static com.romana.devices.ScaleResponse.ScaleCode.*;
+import com.romana.devices.scale.ScaleException;
+import static com.romana.devices.scale.ScaleResponse.ScaleCode.*;
 import com.romana.utilities.CommonUtils;
 import com.romana.utilities.Configuration;
 import java.io.File;
@@ -38,7 +45,7 @@ public class SystemOperations {
 
     private static final int WEIGHT_THRESHOLD = Configuration.getIntConfig("WEIGHT_THRESHOLD");
     private static final int DIFFERENCE_THRESHOLD = Configuration.getIntConfig("DIFFERENCE_THRESHOLD");
-    private ScaleDevice scaleDevice;
+    private Scale scaleDevice;
     private CardDevice cardDevice;
     private TicketDevice ticketDevice;
 
@@ -95,6 +102,8 @@ public class SystemOperations {
                     return true;
                 }
             };
+        } else if (SCALE_PORT.equals("REMOTE")) {
+            this.scaleDevice = new RemoteScale();
         } else {
             this.scaleDevice = new ScaleDevice(SCALE_PORT);
         }
@@ -131,7 +140,7 @@ public class SystemOperations {
     }
     // public ScaleResponse simpleWeight(String plate, String cardId)
 
-    public ScaleResponse simpleWeight(WeightInfo newSimple) throws SerialException,
+    public ScaleResponse simpleWeight(WeightInfo newSimple) throws ScaleException,
             DatabaseException {
 
         int weight = scaleDevice.getWeight();
@@ -148,7 +157,7 @@ public class SystemOperations {
         return new ScaleResponse(OPERATION_OK, newSimple);
     }
 
-    public ScaleResponse startTwoPhase(WeightInfo newTwoPhase) throws SerialException,
+    public ScaleResponse startTwoPhase(WeightInfo newTwoPhase) throws ScaleException,
             DatabaseException {
         // There can be only one Two-Phase process ongoing per plate!
 
@@ -200,7 +209,7 @@ public class SystemOperations {
      * @throws com.romana.devices.SerialException
      * @throws com.romana.database.DatabaseException
      */
-    public ScaleResponse finishTwoPhase(WeightInfo toContinue) throws SerialException,
+    public ScaleResponse finishTwoPhase(WeightInfo toContinue) throws ScaleException,
             DatabaseException {
 
         String plate = toContinue.getPlate();
@@ -236,7 +245,7 @@ public class SystemOperations {
         return new ScaleResponse(OPERATION_OK, toContinue);
     }
 
-    public ScaleResponse nextAxis(WeightInfo weightAxis) throws SerialException {
+    public ScaleResponse nextAxis(WeightInfo weightAxis) throws ScaleException {
 
         CommonUtils.sleep(500); // Wait for stabilization of value
         int weight = scaleDevice.getWeight();

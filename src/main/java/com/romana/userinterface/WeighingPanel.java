@@ -1,13 +1,14 @@
 package com.romana.userinterface;
 
 import com.romana.database.DatabaseException;
-import com.romana.devices.CardDatabase;
-import com.romana.devices.ScaleResponse;
-import static com.romana.devices.ScaleResponse.ScaleCode.*;
+import com.romana.devices.card.CardDatabase;
+import com.romana.devices.scale.ScaleResponse;
+import static com.romana.devices.scale.ScaleResponse.ScaleCode.*;
 import com.romana.devices.SerialException;
 import com.romana.devices.SystemOperations;
 import com.romana.devices.SystemOperations.WeightType;
 import com.romana.devices.WeightInfo;
+import com.romana.devices.scale.ScaleException;
 import com.romana.userinterface.commonwidgets.InteractivePanel;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -70,7 +71,7 @@ public class WeighingPanel extends InteractivePanel {
         }
 
         @Override
-        protected ScaleResponse doInBackground() throws SerialException, DatabaseException {
+        protected ScaleResponse doInBackground() throws ScaleException, DatabaseException {
 
             WeightInfo actualWeight = systemActions.getActualWeightInfo();
             SystemOperations systemOps = systemActions.getSystemOperations();
