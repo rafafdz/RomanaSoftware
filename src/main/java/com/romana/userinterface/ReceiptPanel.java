@@ -18,8 +18,13 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 /**
@@ -43,6 +48,29 @@ public class ReceiptPanel extends InteractivePanel {
     public ReceiptPanel() {
         super(INACTIVITY_TIMEOUT);
         initComponents();
+        setupKeyboardShortcuts();
+    }
+
+    private void setupKeyboardShortcuts() {
+        InputMap inputMap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("SPACE"), "okAction");
+        actionMap.put("okAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                okAction();
+            }
+        });
+    }
+
+    private void okAction() {
+        interfaceActions.switchPanel(PullTicketPanel.class);
+    }
+
+    @Override
+    public void timeoutAction() {
+        okAction();
     }
 
     // For dev purpouses only!
@@ -60,11 +88,6 @@ public class ReceiptPanel extends InteractivePanel {
 
         String url = actualWeightInfo.getUrl();
         urlLabel.setText(WEB_DOMAIN + "/" + url);
-    }
-
-    @Override
-    public void timeoutAction() {
-        interfaceActions.switchPanel(PullTicketPanel.class);
     }
 
     private void initComponents() {
@@ -97,7 +120,7 @@ public class ReceiptPanel extends InteractivePanel {
         Buttons.ConfirmButton okButton = new Buttons.ConfirmButton(80, 10) {
             @Override
             public void clickAction(MouseEvent e) {
-                timeoutAction();
+                okAction();
             }
         };
 

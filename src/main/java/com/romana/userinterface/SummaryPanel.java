@@ -15,7 +15,15 @@ import java.awt.AWTException;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.InputMap;
 
 /**
  *
@@ -37,6 +45,7 @@ public class SummaryPanel extends InteractivePanel {
     public SummaryPanel() {
         super(INACTIVITY_TIMEOUT);
         initComponents();
+        setupKeyboardShortcuts();
     }
 
     private void initComponents() {
@@ -66,6 +75,27 @@ public class SummaryPanel extends InteractivePanel {
         add(buttonContainer, gridBagButtons);
         
         addVerticalStretch(4);
+    }
+    
+    private void setupKeyboardShortcuts() {
+        InputMap inputMap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("SPACE"), "okAction");
+        actionMap.put("okAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clickedOkAction();
+            }
+        });
+
+        inputMap.put(KeyStroke.getKeyStroke("ESCAPE"), "quitAction");
+        actionMap.put("quitAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clickedQuitAction();
+            }
+        });
     }
     
     @Override

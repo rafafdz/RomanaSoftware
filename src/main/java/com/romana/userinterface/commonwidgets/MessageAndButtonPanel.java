@@ -12,7 +12,14 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -40,11 +47,12 @@ public class MessageAndButtonPanel extends InteractivePanel {
     private final GridCounter counter = new GridCounter();
 
     public MessageAndButtonPanel() {
-
+        setupKeyboardShortcuts();
     }
 
     public MessageAndButtonPanel(int timeout) {
         super(timeout);
+        setupKeyboardShortcuts();
     }
     
     public Style.RoundedButton getFirstButton() {
@@ -248,6 +256,19 @@ public class MessageAndButtonPanel extends InteractivePanel {
 
         }
 
+    }
+
+    private void setupKeyboardShortcuts() {
+        InputMap inputMap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("SPACE"), "firstButtonAction");
+        actionMap.put("firstButtonAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                firstButtonAction();
+            }
+        });
     }
 
 }

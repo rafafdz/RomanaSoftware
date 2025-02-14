@@ -15,11 +15,16 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -31,9 +36,28 @@ public class TypePanel extends InteractivePanel {
 
     private final int SIDE_SPACING = 200;
     private final Style.StyledJLabel versionLabel = new Style.StyledJLabel(20);
+    private OptionPanel[] optionPanels;
 
     public TypePanel() {
         initComponents();
+        setupKeyboardShortcuts();
+    }
+
+    private void setupKeyboardShortcuts() {
+        InputMap inputMap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getActionMap();
+
+        // Map number keys 1-3 to panel options
+        for (int i = 1; i <= 3; i++) {
+            final int index = i;
+            inputMap.put(KeyStroke.getKeyStroke(String.valueOf(i)), "option" + i);
+            actionMap.put("option" + i, new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    optionPanels[index - 1].simulateClick();
+                }
+            });
+        }
     }
 
     private void initComponents() {
@@ -45,6 +69,8 @@ public class TypePanel extends InteractivePanel {
             "Varios pesajes en distintos ejes del camión."
         };
         WeightType[] types = {WeightType.SIMPLE, WeightType.TWO_PHASE, WeightType.AXIS};
+        
+        optionPanels = new OptionPanel[types.length];
 
         for (int i = 0; i < types.length; i++) {
             String number = String.valueOf(i + 1);
@@ -52,6 +78,7 @@ public class TypePanel extends InteractivePanel {
             String description = descriptions[i];
             WeightType type = types[i];
             OptionPanel optionPanel = new OptionPanel(number, title, description, type);
+            optionPanels[i] = optionPanel;
             GridBagConstraints gridBagOption = new GridBagConstraints();
             gridBagOption.gridy = i;
             gridBagOption.fill = GridBagConstraints.HORIZONTAL;
@@ -164,6 +191,10 @@ public class TypePanel extends InteractivePanel {
             interfaceActions.getHeader().setTitleText(rawTitle, 60);
             interfaceActions.switchPanel(PlateEntryPanel.class);
             interfaceActions.getPlateEntryFocus();
+        }
+
+        public void simulateClick() {
+            clickAction(null);
         }
     }
 

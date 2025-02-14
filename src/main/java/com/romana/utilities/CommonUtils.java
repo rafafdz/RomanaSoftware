@@ -168,7 +168,7 @@ public class CommonUtils {
     }
 
     public static URL resourceURL(String name) {
-        URL urlPath = new Object().getClass().getResource(name);
+        URL urlPath = CommonUtils.class.getResource(name);
         return urlPath;
     }
 

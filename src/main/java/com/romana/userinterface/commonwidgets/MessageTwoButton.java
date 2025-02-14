@@ -8,6 +8,11 @@ package com.romana.userinterface.commonwidgets;
 import com.romana.userinterface.Style;
 import java.awt.Insets;
 import javax.swing.JFrame;
+import javax.swing.InputMap;
+import javax.swing.ActionMap;
+import javax.swing.AbstractAction;
+import javax.swing.KeyStroke;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -42,8 +47,32 @@ public class MessageTwoButton extends MessageAndButtonPanel{
         quitImage = new Style.StyledImage(QUIT_PATH, 80, 80);
         setFirstButtonLabel(quitImage, new Insets(15, 15, 15, 15));
         setSecondButtonLabel(buttonLabel, new Insets(28, 15, 28, 15));
+        
+        setupKeyboardShortcuts();
     }
     
+    private void setupKeyboardShortcuts() {
+        InputMap inputMap = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+        inputMap.put(KeyStroke.getKeyStroke("SPACE"), "none");
+        
+        ActionMap actionMap = getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("ESCAPE"), "quitAction");
+        actionMap.put("quitAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quitAction();
+            }
+        });
+
+        inputMap.put(KeyStroke.getKeyStroke("SPACE"), "buttonAction");
+        actionMap.put("buttonAction", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonAction();
+            }
+        });
+    }
     
     public void setButtonText(String text) {
         buttonLabel.setText(text);
